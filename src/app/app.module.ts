@@ -3,16 +3,24 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-// import { CalendarModule } from './calendar/calendar.module';
+import { CalendarComponent } from './calendar/calendar.component';
+import { MonthViewComponent } from './calendar/date-views/month-view/month-view.component';
+import { WeekViewComponent } from './calendar/date-views/week-view/week-view.component';
+import { DayViewComponent } from './calendar/date-views/day-view/day-view.component';
+import { WeekdayHeaderComponent } from './calendar/date-views/weekday-header/weekday-header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CalendarComponent,
+    MonthViewComponent,
+    WeekViewComponent,
+    DayViewComponent,
+    WeekdayHeaderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // CalendarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

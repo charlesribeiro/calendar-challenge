@@ -1,0 +1,12 @@
+.header>p{
+    width: 150px;
+    border: 1px solid;
+    background-color: darkblue;
+    color: white;
+
+
+}
+
+.header{
+    display: flex;
+}
