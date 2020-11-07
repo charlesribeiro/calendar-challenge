@@ -12,4 +12,8 @@ export class DayViewComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  newReminder(){
+    console.log("new reminder");
+  }
+
 }
