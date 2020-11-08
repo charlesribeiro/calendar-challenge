@@ -4,12 +4,3 @@
 <button (click)="today()">today</button>
 <button (click)="next()">next</button>
 <button (click)="addReminder()">add</button>
-
-<div>Reminders {{ reminders | async }}</div>
-
-
-<div *ngFor='let item of reminders | async as i'>
-    <div>Reminders {{ (reminders | async ).length}}</div>
-
-        i
-</div>

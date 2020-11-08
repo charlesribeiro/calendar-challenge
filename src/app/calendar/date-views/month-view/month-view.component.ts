@@ -15,11 +15,9 @@ export class MonthViewComponent implements OnInit {
 
 
   ngOnInit(): void {
-    debugger;
   }
 
   ngOnChanges(): void {
-    debugger;
   }
 
 }

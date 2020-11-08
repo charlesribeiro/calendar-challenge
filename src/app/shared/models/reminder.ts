@@ -9,5 +9,5 @@ export interface Reminder {
 
 export interface State{
     reminders : Reminder [];
-    currentDate : DateTime;
+    // currentDate : DateTime;
 }
