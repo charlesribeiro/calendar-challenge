@@ -4,7 +4,7 @@ export interface Reminder {
     reminderText: string;
     color?: number;
     city: string;
-    date: any;
+    date: DateTime;
 }
 
 export interface State{

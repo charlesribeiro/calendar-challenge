@@ -1,4 +1,13 @@
-<div [class.weekend]="isWeekend" [class.day]="!isWeekend" >
+<div [class.weekend]="isWeekend" [class.day]="!isWeekend">
     <p class="dayNumberHeader" (click)="newReminder()">{{date.day}} </p>
-    <!-- <app-reminder></app-reminder> -->
+
+    <!-- {{texto$ | async}}
+    {{date}} -->
+
+    <div *ngFor="let singleReminder of (reminders$ | async)">
+        <!-- Reminder {{singleReminder.date}}+{{date}} -->
+        <div *ngIf="singleReminder.date.day===date.day && singleReminder.date.year===date.year && singleReminder.date.month===date.month ">
+            <app-reminder [reminder]="singleReminder"></app-reminder>
+        </div>
+    </div>
 </div>

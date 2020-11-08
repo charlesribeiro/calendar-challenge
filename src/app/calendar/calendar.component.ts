@@ -5,7 +5,7 @@ import { increment, decrement, reset, addReminder } from '../state/reminder.acti
 import { DateTime } from "luxon";
 import { Reminder, State } from '../shared/models/reminder';
 import { Utils } from '../utils';
-import * as fromAppSelectors from '../state/reminder.selector'
+import * as myActions from '../state/reminder.selector'
 
 @Component({
   selector: 'app-calendar',
@@ -22,8 +22,8 @@ export class CalendarComponent implements OnInit {
   year$: Observable<any>;
 
   constructor(private store: Store<State>) {
-    this.texto$ = this.store.pipe(select(fromAppSelectors.getText));
-    this.reminders$ = this.store.pipe(select(fromAppSelectors.getReminder));
+    this.texto$ = this.store.pipe(select(myActions.getText));
+    this.reminders$ = this.store.pipe(select(myActions.getReminder));
 
     debugger;
 
@@ -31,8 +31,8 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.texto$ = this.store.pipe(select(fromAppSelectors.getText));
-    // this.reminders$ = this.store.pipe(select(fromAppSelectors.getReminder));
+    // this.texto$ = this.store.pipe(select(myActions.getText));
+    // this.reminders$ = this.store.pipe(select(myActions.getReminder));
 
 
     debugger;
@@ -44,7 +44,7 @@ export class CalendarComponent implements OnInit {
   addReminder() {
 
     let rem: Reminder = {
-      reminderText: "Texto", date: "date",
+      reminderText: "Texto", date: DateTime.local(),
       city: "New York"
     };
     this.store.dispatch(addReminder({ reminder: rem }));
