@@ -30,7 +30,7 @@ export class DayViewComponent implements OnInit {
 
 
     let rem: Reminder = {
-      reminderText: "Text", date: "date",
+      reminderText: "Text", date: this.date,
       city: "Boston"
     };
     this.store.dispatch(addReminder({ reminder: rem }));

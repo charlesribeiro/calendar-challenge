@@ -54,4 +54,11 @@ export class Utils {
     static getDayToDisplayOnCalendarCell(monthsAheadFromToday: number,weekNumberInMonth:number, weekDayFromSunday:number ){
         return this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({weeks: weekNumberInMonth}).plus({days: weekDayFromSunday});
     }
+
+    static getMonthName(monthsAheadFromToday: number){
+        return DateTime.local().plus({months: monthsAheadFromToday}).monthLong;
+    }
+    static getYear(monthsAheadFromToday: number){
+        return DateTime.local().plus({months: monthsAheadFromToday}).year;
+    }
 }

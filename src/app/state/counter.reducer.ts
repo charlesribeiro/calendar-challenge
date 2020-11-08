@@ -12,11 +12,11 @@ const _counterReducer = createReducer(
   on(addReminder, (state, {reminder})=> {
     console.log(state );
 
-    Utils.getDaysToDisplayByWeek(1, 0);
-    Utils.getDaysToDisplayByWeek(1, 1);
-    Utils.getDaysToDisplayByWeek(1, 2);
-    Utils.getDaysToDisplayByWeek(1, 3);
-    Utils.getDaysToDisplayByWeek(1, 4);
+    // Utils.getDaysToDisplayByWeek(1, 0);
+    // Utils.getDaysToDisplayByWeek(1, 1);
+    // Utils.getDaysToDisplayByWeek(1, 2);
+    // Utils.getDaysToDisplayByWeek(1, 3);
+    // Utils.getDaysToDisplayByWeek(1, 4);
 
     return ({ reminders: [...state.reminders, reminder] , currentDate: state.currentDate});
   }),
