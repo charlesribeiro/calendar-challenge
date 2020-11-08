@@ -21,4 +21,9 @@ export class WeekdayHeaderComponent implements OnInit {
 
   }
 
+  ngOnChanges(): void{
+    this.monthToDisplay = Utils.getMonthName(this.monthsAheadFromToday);
+    this.yearToDisplay = String(Utils.getYear(this.monthsAheadFromToday));
+  }
+
 }

@@ -3,7 +3,7 @@ import { DateTime } from 'luxon';
 export class Utils {
     static getFirstDayOfTheMonth( year: number, month: number,) {
 
-
+        
         const firstDayOfTheCurrentMonth: DateTime = (DateTime.local(year, month, 1));
 
         return firstDayOfTheCurrentMonth;
@@ -33,11 +33,11 @@ export class Utils {
     static getFirstDayToShowOnCalendarView(monthsAheadFromToday: number){
         //this currently shows the first sunday to show on the calendar view;
         
-        return this.getFirstDayToShowOnCalendar(this.getFirstDayOfTheMonth(DateTime.local().year, DateTime.local().plus({months:monthsAheadFromToday}).month));
+        return this.getFirstDayToShowOnCalendar(this.getFirstDayOfTheMonth(DateTime.local().plus({months:monthsAheadFromToday}).year, DateTime.local().plus({months:monthsAheadFromToday}).month));
     }
 
     static getDaysToDisplayByWeek(monthsAheadFromToday: number, weekNumberInMonth: number){
-        this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({weeks: weekNumberInMonth});
+        console.log("first day", monthsAheadFromToday,weekNumberInMonth, this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({weeks: weekNumberInMonth}));
 
         console.log(this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({weeks: weekNumberInMonth}).plus({days: 0}));
         console.log(this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({weeks: weekNumberInMonth}).plus({days: 1}));
@@ -52,6 +52,7 @@ export class Utils {
     }
 
     static getDayToDisplayOnCalendarCell(monthsAheadFromToday: number,weekNumberInMonth:number, weekDayFromSunday:number ){
+        debugger;
         return this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({weeks: weekNumberInMonth}).plus({days: weekDayFromSunday});
     }
 

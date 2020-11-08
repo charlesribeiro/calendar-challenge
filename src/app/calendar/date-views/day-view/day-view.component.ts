@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { DateTime } from 'luxon';
 import { Observable } from 'rxjs';
 import { addReminder } from 'src/app/state/counter.actions';
-import { Reminder } from '../../../shared/models/reminder';
+import { Reminder, State } from '../../../shared/models/reminder';
 
 @Component({
   selector: 'app-day-view',
@@ -17,11 +17,11 @@ export class DayViewComponent implements OnInit {
   @Input() isWeekend: boolean;
   @Input() date: DateTime;
 
-  constructor(private store: Store<{ reminders: Reminder[] }>) {
+  constructor(private store: Store<State>) {
     this.reminders$ = store.select('reminders');
   }
   ngOnInit(): void {
-    console.log("isWeekend", this.isWeekend);
+    // console.log("isWeekend", this.isWeekend);
     console.log("date", this.date);
   }
 

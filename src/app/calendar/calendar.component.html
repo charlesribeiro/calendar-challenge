@@ -1,5 +1,15 @@
-<app-month-view [monthsAheadFromToday]=1></app-month-view>
-<button (click)="addReminder()">addReminder</button>
-<div>Current Count: {{ reminders$ | async }}</div>
-<button (click)="decrement()">Decrement</button>
-<button (click)="reset()">Reset Counter</button>
+<app-month-view [monthsAheadFromToday]=monthsAheadFromToday></app-month-view>
+
+<button (click)="previous()">previous</button>
+<button (click)="today()">today</button>
+<button (click)="next()">next</button>
+<button (click)="addReminder()">add</button>
+
+<div>Reminders {{ reminders | async }}</div>
+
+
+<div *ngFor='let item of reminders | async as i'>
+    <div>Reminders {{ (reminders | async ).length}}</div>
+
+        i
+</div>
