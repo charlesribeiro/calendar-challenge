@@ -1,10 +1,10 @@
-<app-weekday-header></app-weekday-header>
+<app-weekday-header [[monthsAheadFromToday]="monthsAheadFromToday"></app-weekday-header>
 
 <div>
-    week 1<app-week-view></app-week-view>
-    week 2<app-week-view></app-week-view>
-    week 3<app-week-view></app-week-view>
-    week 4<app-week-view></app-week-view>
-    week 5<app-week-view></app-week-view>
+    <app-week-view [monthsAheadFromToday]="monthsAheadFromToday" [week]="0"></app-week-view>
+    <app-week-view [monthsAheadFromToday]="monthsAheadFromToday" [week]="1"></app-week-view>
+    <app-week-view [monthsAheadFromToday]="monthsAheadFromToday" [week]="2"></app-week-view>
+    <app-week-view [monthsAheadFromToday]="monthsAheadFromToday" [week]="3"></app-week-view>
+    <app-week-view [monthsAheadFromToday]="monthsAheadFromToday" [week]="4"></app-week-view>
 
 </div>

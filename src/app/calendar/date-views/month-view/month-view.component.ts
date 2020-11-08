@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-month-view',
@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MonthViewComponent implements OnInit {
 
+  @Input() monthsAheadFromToday: number;
+
+  week =0;
+
   constructor() { }
+
 
   ngOnInit(): void {
   }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { DateTime } from 'luxon';
 import { Observable } from 'rxjs';
 import { addReminder } from 'src/app/state/counter.actions';
 import { Reminder } from '../../../shared/models/reminder';
@@ -13,10 +14,15 @@ export class DayViewComponent implements OnInit {
 
   reminders$: Observable<Reminder[]>;
 
+  @Input() isWeekend: boolean;
+  @Input() date: DateTime;
+
   constructor(private store: Store<{ reminders: Reminder[] }>) {
     this.reminders$ = store.select('reminders');
   }
   ngOnInit(): void {
+    console.log("isWeekend", this.isWeekend);
+    console.log("date", this.date);
   }
 
   newReminder() {

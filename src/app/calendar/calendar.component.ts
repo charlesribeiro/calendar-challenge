@@ -20,8 +20,8 @@ export class CalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("Current date:", DateTime.local());
-    console.log("Reminder", this.reminders$)
+    // console.log("Current date:", DateTime.local());
+    // console.log("Reminder", this.reminders$)
 
   }
 

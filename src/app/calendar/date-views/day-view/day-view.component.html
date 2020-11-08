@@ -1,4 +1,4 @@
-<div class=day >
-    <p (click)="newReminder()">Day:# </p>
-    <app-reminder></app-reminder>
+<div [class.weekend]="isWeekend" [class.day]="!isWeekend" >
+    <p class="dayNumberHeader" (click)="newReminder()">{{date.c.day}} </p>
+    <!-- <app-reminder></app-reminder> -->
 </div>

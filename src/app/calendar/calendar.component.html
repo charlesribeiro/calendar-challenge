@@ -1,4 +1,4 @@
-<app-month-view></app-month-view>
+<app-month-view [monthsAheadFromToday]=1></app-month-view>
 <button (click)="addReminder()">addReminder</button>
 <div>Current Count: {{ reminders$ | async }}</div>
 <button (click)="decrement()">Decrement</button>

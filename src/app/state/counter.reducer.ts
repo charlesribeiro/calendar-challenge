@@ -12,7 +12,12 @@ const _counterReducer = createReducer(
   on(addReminder, (state, {reminder})=> {
     console.log(state );
 
-    console.log(Utils.getFirstDayOfTheCurrentMonth());
+    Utils.getDaysToDisplayByWeek(1, 0);
+    Utils.getDaysToDisplayByWeek(1, 1);
+    Utils.getDaysToDisplayByWeek(1, 2);
+    Utils.getDaysToDisplayByWeek(1, 3);
+    Utils.getDaysToDisplayByWeek(1, 4);
+
     return ({ reminders: [...state.reminders, reminder] , currentDate: state.currentDate});
   }),
   // on(setCurrentDate, (state, {date})=> {
