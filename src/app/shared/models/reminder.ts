@@ -5,6 +5,7 @@ export interface Reminder {
     color?: number;
     city: string;
     date: DateTime;
+    id: number;
 }
 
 export interface State{

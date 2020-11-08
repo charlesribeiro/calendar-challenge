@@ -6,6 +6,7 @@ import { DateTime } from "luxon";
 import { Reminder, State } from '../shared/models/reminder';
 import { Utils } from '../utils';
 import * as myActions from '../state/reminder.selector'
+import { WeatherServiceService } from 'src/core/services/weather-service.service';
 
 @Component({
   selector: 'app-calendar',
@@ -21,22 +22,24 @@ export class CalendarComponent implements OnInit {
 
   year$: Observable<any>;
 
-  constructor(private store: Store<State>) {
+  constructor(private store: Store<State>, private weatherService: WeatherServiceService) {
     this.texto$ = this.store.pipe(select(myActions.getText));
     this.reminders$ = this.store.pipe(select(myActions.getReminder));
-
-    debugger;
 
   }
 
   ngOnInit(): void {
 
+
+    this.weatherService.retrieveForecastForFiveDays("Curitiba").subscribe((res) => {
+      console.log(res.list);
+
+      res.list.forEach(weatherInfo=>{
+        console.log(weatherInfo.weather[0]);
+      })
+    }, error => console.error(error));
     // this.texto$ = this.store.pipe(select(myActions.getText));
-    // this.reminders$ = this.store.pipe(select(myActions.getReminder));
-
-
-    debugger;
-
+    // this.reminders$ = this.store.pipe(select(myActions.getReminder))
 
   }
 
@@ -45,10 +48,11 @@ export class CalendarComponent implements OnInit {
 
     let rem: Reminder = {
       reminderText: "Texto", date: DateTime.local(),
-      city: "New York"
+      city: "New York",
+      id: 1
     };
     this.store.dispatch(addReminder({ reminder: rem }));
-    console.log("Reminder", this.texto$ )
+    console.log("Reminder", this.texto$)
 
   }
 

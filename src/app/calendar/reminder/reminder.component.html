@@ -1,4 +1,4 @@
-<div class="reminder" [ngStyle]="{'background-color': color}">
+<div class="reminder" [ngStyle]="{'background-color': color}" (click)="reminderClick()">
     <div>{{reminderText}}</div>
     <div>{{weatherText}}</div>
     <div>{{cityText}}</div>

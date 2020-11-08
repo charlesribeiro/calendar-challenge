@@ -27,6 +27,12 @@ export class ReminderComponent implements OnInit {
     this.date = this.reminder.date;
   }
 
+  reminderClick(){
+    console.warn(this.reminder);
+  }
+
+
+
 
 
 

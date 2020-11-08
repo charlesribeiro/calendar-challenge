@@ -19,6 +19,7 @@ import { environment } from '../environments/environment'; // Angular CLI enviro
 import { EffectsModule } from '@ngrx/effects';
 import { ReminderEffects } from './state/reminder.effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     StoreModule.forRoot({ reminderContext: reminderReducer }), 
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

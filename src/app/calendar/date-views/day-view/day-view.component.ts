@@ -24,19 +24,19 @@ export class DayViewComponent implements OnInit {
   constructor(private store: Store<State>) {
     this.texto$ = this.store.pipe(select(myActions.getText));
     // this.reminders$ = this.store.pipe(select(myActions.getRemindersOnDate(this.date)));
-    this.reminders$ = this.store.pipe(select(myActions.getRemindersOnDate, {date: this.date}));
+    this.reminders$ = this.store.pipe(select(myActions.getRemindersOnDate, { date: this.date }));
 
   }
 
   ngOnInit(): void {
     console.log("date", this.date);
-    this.reminders$ = this.store.pipe(select(myActions.getRemindersOnDate, {date: this.date}));
+    this.reminders$ = this.store.pipe(select(myActions.getRemindersOnDate, { date: this.date }));
 
   }
 
   ngOnChanges(): void {
     console.log("date", this.date);
-    this.reminders$ = this.store.pipe(select(myActions.getRemindersOnDate, {date: this.date}));
+    this.reminders$ = this.store.pipe(select(myActions.getRemindersOnDate, { date: this.date }));
 
   }
 
@@ -45,7 +45,7 @@ export class DayViewComponent implements OnInit {
 
     let rem: Reminder = {
       reminderText: "Text", date: this.date,
-      city: "Boston"
+      city: "Boston", id: 2
     };
     this.store.dispatch(addReminder({ reminder: rem }));
     console.log("Reminder", this.reminders$)
