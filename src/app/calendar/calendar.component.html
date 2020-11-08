@@ -4,3 +4,12 @@
 <button (click)="today()">today</button>
 <button (click)="next()">next</button>
 <button (click)="addReminder()">add</button>
+{{texto$ | async}}
+<!-- {{reminders$ | async}} -->
+
+<div *ngFor="let product of (reminders$ | async)">
+    {{product.reminderText}}
+    {{product.city}}
+    {{product.date}}
+
+</div>

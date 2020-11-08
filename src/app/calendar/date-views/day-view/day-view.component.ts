@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { DateTime } from 'luxon';
 import { Observable } from 'rxjs';
-import { addReminder } from 'src/app/state/counter.actions';
+import { addReminder } from 'src/app/state/reminder.actions';
 import { Reminder, State } from '../../../shared/models/reminder';
 
 @Component({

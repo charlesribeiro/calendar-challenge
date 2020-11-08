@@ -11,11 +11,14 @@ import { WeekdayHeaderComponent } from './calendar/date-views/weekday-header/wee
 import { ReminderComponent } from './calendar/reminder/reminder.component'
 
 import { StoreModule } from '@ngrx/store';
-import { counterReducer } from './state/counter.reducer';
+import { reminderReducer } from './state/reminder.reducer';
 
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment'; // Angular CLI environment
+import { EffectsModule } from '@ngrx/effects';
+import { ReminderEffects } from './state/reminder.effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [
@@ -29,11 +32,13 @@ import { environment } from '../environments/environment'; // Angular CLI enviro
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({ count: counterReducer }), 
+    StoreModule.forRoot({ reminderContext: reminderReducer }), 
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
+    StoreRouterConnectingModule.forRoot(),
+    EffectsModule.forRoot([ReminderEffects]),
     AppRoutingModule,
   ],
   providers: [],

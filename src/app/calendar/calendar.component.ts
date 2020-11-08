@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { increment, decrement, reset, addReminder } from '../state/counter.actions';
+import { increment, decrement, reset, addReminder } from '../state/reminder.actions';
 import { DateTime } from "luxon";
 import { Reminder, State } from '../shared/models/reminder';
 import { Utils } from '../utils';
+import * as fromAppSelectors from '../state/reminder.selector'
 
 @Component({
   selector: 'app-calendar',
@@ -15,43 +16,52 @@ export class CalendarComponent implements OnInit {
 
   @Input() monthsAheadFromToday: number;
 
-  reminders: Observable<Reminder[]>;
+  reminders$: Observable<Reminder[]>;
+  texto$: Observable<String>;
+
   year$: Observable<any>;
 
-  constructor(private store: Store<{reminders: Reminder[]}>) {
-    // this.reminders$ = store.select(state=> state.reminders);
-    // this.year$ = store.select<DateTime>(state=> state.currentDate);
-    // this.reminders$ = this.store.pipe(select('reminders'))
+  constructor(private store: Store<State>) {
+    this.texto$ = this.store.pipe(select(fromAppSelectors.getText));
+    this.reminders$ = this.store.pipe(select(fromAppSelectors.getReminder));
 
-    this.reminders = store.select(state => state.reminders)
+    debugger;
+
   }
 
   ngOnInit(): void {
 
+    // this.texto$ = this.store.pipe(select(fromAppSelectors.getText));
+    // this.reminders$ = this.store.pipe(select(fromAppSelectors.getReminder));
+
+
+    debugger;
+
+
   }
 
- 
+
   addReminder() {
 
-    let rem: Reminder = {reminderText: "Texto", date : "date",
-    city :"New York"
-  };
-    this.store.dispatch(addReminder({reminder: rem}));
-    console.log("Reminder", this.reminders)
+    let rem: Reminder = {
+      reminderText: "Texto", date: "date",
+      city: "New York"
+    };
+    this.store.dispatch(addReminder({ reminder: rem }));
+    console.log("Reminder", this.texto$ )
 
   }
 
 
-  next(){
+  next() {
     this.monthsAheadFromToday++;
-    debugger;
   }
 
-  previous(){
+  previous() {
     this.monthsAheadFromToday--;
   }
 
-  today(){
+  today() {
     this.monthsAheadFromToday = 0;
   }
 
