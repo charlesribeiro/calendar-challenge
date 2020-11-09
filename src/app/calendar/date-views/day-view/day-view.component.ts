@@ -6,7 +6,10 @@ import { addReminder } from 'src/app/state/reminder.actions';
 import { Utils } from 'src/app/utils';
 import { WeatherServiceService } from 'src/core/services/weather-service.service';
 import { Reminder, State } from '../../../shared/models/reminder';
-import * as myActions from '../../../state/reminder.selector'
+import * as myActions from '../../../state/reminder.selector';
+import { MatDialog } from "@angular/material/dialog";
+import { ReminderDialogComponent } from '../../reminder-dialog/reminder-dialog.component';
+
 
 @Component({
   selector: 'app-day-view',
@@ -23,7 +26,8 @@ export class DayViewComponent implements OnInit {
 
   year$: Observable<any>;
 
-  constructor(private store: Store<State>, private weatherService: WeatherServiceService) {
+  constructor(private store: Store<State>, private weatherService: WeatherServiceService, public dialog: MatDialog,
+  ) {
     this.texto$ = this.store.pipe(select(myActions.getText));
     // this.reminders$ = this.store.pipe(select(myActions.getRemindersOnDate(this.date)));
     this.reminders$ = this.store.pipe(select(myActions.getRemindersOnDate, { date: this.date }));
@@ -44,7 +48,32 @@ export class DayViewComponent implements OnInit {
 
   newReminder() {
     console.log("new reminder", this.date);
-    this.retrieveForecastForGivenDay("Boston", this.date);
+   
+    const dialog = this.dialog.open(ReminderDialogComponent, {
+      data: {
+
+        date: this.date,
+
+        // wit: this.wit,
+        // showGoals: this.showGoals,
+        // witValidate: this.witValidate,
+        // witLabel: this.witLabel,
+        // witBegin: this.witBegin,
+        // witEnd: this.witEnd,
+        // well: currentWell,
+        // language: this.languageService.getLang(),
+        // filterWits: this.filterWits,
+      },
+      maxWidth: 800,
+    });
+
+    dialog.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      this.retrieveForecastForGivenDay("Boston", this.date);
+
+    });
+   
+   
 
   }
 
@@ -67,12 +96,12 @@ export class DayViewComponent implements OnInit {
         console.warn(validForecasts);
         console.log(validForecasts[0].weather[0].main);
 
-      
+
         let rem: Reminder = {
           reminderText: "Text", date: this.date,
           city, id: Utils.generateUniqueIdForReminder(), weatherText: validForecasts[0].weather[0].main
         };
-    
+
 
         this.store.dispatch(addReminder({ reminder: rem }));
 
@@ -87,9 +116,9 @@ export class DayViewComponent implements OnInit {
 
       let rem: Reminder = {
         reminderText: "Text", date: this.date,
-        city, id: Utils.generateUniqueIdForReminder(), weatherText:"--"
+        city, id: Utils.generateUniqueIdForReminder(), weatherText: "--"
       };
-  
+
 
       this.store.dispatch(addReminder({ reminder: rem }));
       return "not available"

@@ -20,6 +20,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { ReminderEffects } from './state/reminder.effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DemoMaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     HttpClientModule,
+    DemoMaterialModule,
     StoreModule.forRoot({ reminderContext: reminderReducer }), 
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
@@ -42,6 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([ReminderEffects]),
     AppRoutingModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
