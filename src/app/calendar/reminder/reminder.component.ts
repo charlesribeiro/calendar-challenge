@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { DateTime } from 'luxon';
-import { Reminder } from 'src/app/shared/models/reminder';
+import { Reminder, State } from 'src/app/shared/models/reminder';
+import { removeReminder } from 'src/app/state/reminder.actions';
 
 @Component({
   selector: 'app-reminder',
@@ -19,7 +21,7 @@ export class ReminderComponent implements OnInit {
 
   color: String = "yellow";
 
-  constructor() { }
+  constructor(private store: Store<State>) { }
 
   ngOnInit(): void {
     this.reminderText = this.reminder.reminderText;
@@ -30,6 +32,8 @@ export class ReminderComponent implements OnInit {
 
   reminderClick(){
     console.warn(this.reminder);
+    this.store.dispatch(removeReminder({ reminder: this.reminder }));
+
   }
 
   
