@@ -9,10 +9,10 @@
 
 .header{
     display: flex;
-    width: 1500px;
+    width: 1000px;
 }
 
 .weekDay{
-    width: 150px;
+    width: 120px;
 
 }

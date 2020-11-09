@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Utils } from 'src/app/utils';
+import { Utils } from '../../../utils';
 
 @Component({
   selector: 'app-weekday-header',

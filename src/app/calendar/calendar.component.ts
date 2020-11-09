@@ -6,7 +6,7 @@ import { DateTime } from "luxon";
 import { Reminder, State } from '../shared/models/reminder';
 import { Utils } from '../utils';
 import * as myActions from '../state/reminder.selector'
-import { WeatherServiceService } from 'src/core/services/weather-service.service';
+import { WeatherService } from '../../core/services/weather.service';
 
 @Component({
   selector: 'app-calendar',
@@ -22,7 +22,7 @@ export class CalendarComponent implements OnInit {
 
   year$: Observable<any>;
 
-  constructor(private store: Store<State>, private weatherService: WeatherServiceService) {
+  constructor(private store: Store<State>, private weatherService: WeatherService) {
     this.texto$ = this.store.pipe(select(myActions.getText));
     this.reminders$ = this.store.pipe(select(myActions.getAllReminders));
 

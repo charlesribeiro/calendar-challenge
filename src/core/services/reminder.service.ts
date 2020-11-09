@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { DateTime } from 'luxon';
-import { Reminder, State } from 'src/app/shared/models/reminder';
-import { Utils } from 'src/app/utils';
-import { WeatherServiceService } from './weather-service.service';
+import { Reminder, State } from '../../app/shared/models/reminder';
+import { Utils } from '../../app/utils'
+import { WeatherService } from './weather.service';
 import { select, Store } from '@ngrx/store';
-import { addReminder, editReminder } from 'src/app/state/reminder.actions';
+import { addReminder, editReminder } from '../../app/state/reminder.actions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReminderService {
 
-  constructor(public weatherService: WeatherServiceService, private store: Store<State>) { }
+  constructor(public weatherService: WeatherService, private store: Store<State>) { }
 
   retrieveForecastForGivenDay(city: String, reminderText: String, date: DateTime, color: String, idOfReminderToEdit?: number) {
     debugger;

@@ -2,9 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { DateTime } from 'luxon';
 import { Observable } from 'rxjs';
-import { addReminder, removeAllRemindersFromDay } from 'src/app/state/reminder.actions';
-import { Utils } from 'src/app/utils';
-import { WeatherServiceService } from 'src/core/services/weather-service.service';
+import { addReminder, removeAllRemindersFromDay } from '../../../state/reminder.actions';
+import { Utils } from '../../../utils';
+import { WeatherService } from '../../../../core/services/weather.service';
 import { Reminder, State } from '../../../shared/models/reminder';
 import * as myActions from '../../../state/reminder.selector';
 import { MatDialog } from "@angular/material/dialog";
@@ -28,7 +28,7 @@ export class DayViewComponent implements OnInit {
 
   year$: Observable<any>;
 
-  constructor(private store: Store<State>, private weatherService: WeatherServiceService, public dialog: MatDialog,
+  constructor(private store: Store<State>, private weatherService: WeatherService, public dialog: MatDialog,
   ) {
     this.texto$ = this.store.pipe(select(myActions.getText));
     // this.remindersForThisDate$ = this.store.pipe(select(myActions.getRemindersOnDate(this.date)));

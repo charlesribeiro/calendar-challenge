@@ -2,12 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DateTime } from 'luxon';
 import { Observable } from 'rxjs';
-import { WeatherInfo } from 'src/app/shared/models/weather';
+import { WeatherInfo } from '../../app/shared/models/weather';
 
 @Injectable({
   providedIn: 'root'
 })
-export class WeatherServiceService {
+export class WeatherService {
 
   weatherUrl: string;
   daysToShowAhead: number = 10;

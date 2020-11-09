@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DateTime } from 'luxon';
-import { Utils } from 'src/app/utils';
+import { Utils } from '../../../utils';
 
 @Component({
   selector: 'app-week-view',

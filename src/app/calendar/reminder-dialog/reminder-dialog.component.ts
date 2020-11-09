@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DateTime } from 'luxon';
-import { ReminderService } from 'src/core/services/reminder.service';
+import { ReminderService } from '../../../core/services/reminder.service';
 
 @Component({
   selector: 'app-reminder-dialog',
