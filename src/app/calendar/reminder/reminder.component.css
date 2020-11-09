@@ -1,1 +1,10 @@
-.reminder{background-color: LightYellow}
+.reminder{
+    background-color: LightYellow;
+    font-size: 10px;
+    border-radius: 4px;
+}
+
+.icon{
+    width: 20%;
+
+}

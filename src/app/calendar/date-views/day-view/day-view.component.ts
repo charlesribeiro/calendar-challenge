@@ -53,8 +53,8 @@ export class DayViewComponent implements OnInit {
       data: {
 
         date: this.date,
-        city: "cityTest",
-        reminderText: "reminderExample",
+        city: "",
+        reminderText: "",
 
       },
       maxWidth: 800,

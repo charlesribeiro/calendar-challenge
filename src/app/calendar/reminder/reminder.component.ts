@@ -21,6 +21,7 @@ export class ReminderComponent implements OnInit {
   weatherText: String;
   date: DateTime;
   cityText: String = "City";
+  weatherUrl: String="";
 
   color: String = "yellow";
 
@@ -31,6 +32,8 @@ export class ReminderComponent implements OnInit {
     this.cityText = this.reminder.city;
     this.date = this.reminder.date;
     this.weatherText = this.reminder.weatherText;
+    this.color = this.reminder.color;
+    this.weatherUrl = `http://openweathermap.org/img/wn/${this.reminder.weatherIcon}@2x.png`
   }
 
   reminderClick(){

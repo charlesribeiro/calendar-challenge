@@ -13,7 +13,7 @@ export class ReminderService {
 
   constructor(public weatherService: WeatherServiceService, private store: Store<State>) { }
 
-  retrieveForecastForGivenDay(city: String, reminderText: String, date: DateTime, idOfReminderToEdit?: number) {
+  retrieveForecastForGivenDay(city: String, reminderText: String, date: DateTime, color: String, idOfReminderToEdit?: number) {
     debugger;
 
     let validForecasts;
@@ -30,14 +30,16 @@ export class ReminderService {
           return Math.abs(+weatherInfo.dt * 1000 - date.toMillis()) <= 3600000 * 3;
         })
 
-        if(idOfReminderToEdit){
+        console.warn("valid forecast", validForecasts)
+
+        if (idOfReminderToEdit) {
           debugger;
-          this.editExistingReminder(reminderText, date, city, idOfReminderToEdit, validForecasts[0].weather[0].main);
+          this.editExistingReminder(reminderText, date, city, idOfReminderToEdit, color, validForecasts[0].weather[0].main, validForecasts[0].weather[0].icon);
 
         }
 
-        else{
-          this.addNewReminder(reminderText, date, city, validForecasts[0].weather[0].main);
+        else {
+          this.addNewReminder(reminderText, date, city, color, validForecasts[0].weather[0].main, validForecasts[0].weather[0].icon);
 
         }
 
@@ -50,14 +52,14 @@ export class ReminderService {
     }
     else {
 
-      if(idOfReminderToEdit){
+      if (idOfReminderToEdit) {
         debugger;
-        this.editExistingReminder(reminderText, date, city, idOfReminderToEdit);
+        this.editExistingReminder(reminderText, date, city, idOfReminderToEdit, color);
 
       }
 
-      else{
-        this.addNewReminder(reminderText, date, city);
+      else {
+        this.addNewReminder(reminderText, date, city, color);
 
       }
 
@@ -66,12 +68,12 @@ export class ReminderService {
 
   }
 
-  addNewReminder(reminderText: String, date: DateTime, city: String, forecastText: String = "") {
+  addNewReminder(reminderText: String, date: DateTime, city: String, color: String, weatherText: String = "", weatherIcon: String = "") {
 
 
     let rem: Reminder = {
-      reminderText: reminderText, date: date,
-      city, id: Utils.generateUniqueIdForReminder(), weatherText: forecastText
+      reminderText, date,
+      city, id: Utils.generateUniqueIdForReminder(), weatherText, color, weatherIcon
     };
 
     debugger;
@@ -80,11 +82,11 @@ export class ReminderService {
     this.store.dispatch(addReminder({ reminder: rem }));
   }
 
-  editExistingReminder(reminderText: String, date: DateTime, city: String, id: number, forecastText: String = "") { 
+  editExistingReminder(reminderText: String, date: DateTime, city: String, id: number, color: String, weatherText: String = "", weatherIcon: String = "") {
 
     let rem: Reminder = {
-      reminderText: reminderText, date: date,
-      city, id, weatherText: forecastText
+      reminderText, date,
+      city, id, weatherText, color, weatherIcon
     };
 
     debugger;

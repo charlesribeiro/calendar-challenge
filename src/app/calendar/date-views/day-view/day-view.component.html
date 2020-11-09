@@ -1,8 +1,5 @@
-<div [class.weekend]="isWeekend" [class.day]="!isWeekend">
-    <p class="dayNumberHeader" (click)="newReminder()">{{date.day}} </p>
-
-    <!-- {{texto$ | async}}
-    {{date}} -->
+<div [class.weekend]="isWeekend" [class.day]="!isWeekend" (click)="newReminder()">
+    <p class="dayNumberHeader" >{{date.day}} </p>
 
     <div *ngFor="let singleReminder of (reminders$ | async)">
         <!-- Reminder {{singleReminder.date}}+{{date}} -->

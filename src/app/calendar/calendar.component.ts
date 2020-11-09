@@ -29,18 +29,6 @@ export class CalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-
-    this.weatherService.retrieveForecastForFiveDays("Curitiba").subscribe((res) => {
-      console.log(res.list);
-
-      res.list.forEach(weatherInfo=>{
-        console.log(weatherInfo.weather[0]);
-      })
-    }, error => console.error(error));
-    // this.texto$ = this.store.pipe(select(myActions.getText));
-    // this.reminders$ = this.store.pipe(select(myActions.getReminder))
-
   }
 
 

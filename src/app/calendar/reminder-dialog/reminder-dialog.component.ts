@@ -43,16 +43,22 @@ export class ReminderDialogComponent implements OnInit {
     let newDate = DateTime.fromJSDate(new Date(this.dateControl.value))
     console.log(newDate)
     // console.log(DateTime.fromJSDate(newDate));
+
+    const colorSpinnerDiv: any = document.getElementById("reminderColor");
+
+    const selectedColor = colorSpinnerDiv.value;
     debugger;
+
+
 
     if (this.dataChart.reminderId) {
       debugger;
-      this.reminderService.retrieveForecastForGivenDay(this.cityControl.value, this.reminderControl.value, newDate, this.dataChart.reminderId);
+      this.reminderService.retrieveForecastForGivenDay(this.cityControl.value, this.reminderControl.value, newDate, selectedColor, this.dataChart.reminderId);
     }
 
     else {
       debugger;
-      this.reminderService.retrieveForecastForGivenDay(this.cityControl.value, this.reminderControl.value, newDate);
+      this.reminderService.retrieveForecastForGivenDay(this.cityControl.value, this.reminderControl.value, newDate, selectedColor);
     }
 
   }
@@ -62,7 +68,7 @@ export class ReminderDialogComponent implements OnInit {
     console.log(document.querySelector("#myColorPicker"));
     this.picker.cancel();
 
-    this.dialogRef.close({ data: 'you confirmed' })
+    this.dialogRef.close({ data: 'you data' })
   }
 
 }

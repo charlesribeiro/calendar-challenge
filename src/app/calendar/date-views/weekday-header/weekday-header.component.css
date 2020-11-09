@@ -1,6 +1,7 @@
 .header>p{
     width: 150px;
     border: 1px solid;
+    padding: 1px;
     background-color: darkblue;
     color: white;
     text-align: center;

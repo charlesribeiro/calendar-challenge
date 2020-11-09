@@ -1,15 +1,20 @@
 .day{
     border: 1px solid;
     width: 150px;
+    margin: 1px;
+
 }
 
 .weekend{
     border: 1px solid;
     width: 150px;
     background-color: silver;
+    margin: 1px;
+
 }
 
 .dayNumberHeader{
     color:red;
     font-family: 'Poppins', sans-serif;
+    cursor: pointer;
 }
