@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { DateTime } from 'luxon';
 import { Reminder, State } from 'src/app/shared/models/reminder';
 import { removeReminder } from 'src/app/state/reminder.actions';
+import { ReminderService } from 'src/core/services/reminder.service';
+import { ReminderDialogComponent } from '../reminder-dialog/reminder-dialog.component';
 
 @Component({
   selector: 'app-reminder',
@@ -21,7 +24,7 @@ export class ReminderComponent implements OnInit {
 
   color: String = "yellow";
 
-  constructor(private store: Store<State>) { }
+  constructor(private store: Store<State>, public reminderService: ReminderService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.reminderText = this.reminder.reminderText;
@@ -32,7 +35,24 @@ export class ReminderComponent implements OnInit {
 
   reminderClick(){
     console.warn(this.reminder);
-    this.store.dispatch(removeReminder({ reminder: this.reminder }));
+
+    
+    const dialog = this.dialog.open(ReminderDialogComponent, {
+      data: {
+
+        date: this.reminder.date,
+        city: this.reminder.city,
+        reminderText: this.reminder.reminderText,
+        reminderId: this.reminder.id
+
+      },
+      maxWidth: 800,
+    });
+
+    
+    // this.reminderService.retrieveForecastForGivenDay(reminder.)
+    
+    // this.store.dispatch(removeReminder({ reminder: this.reminder }));
 
   }
 

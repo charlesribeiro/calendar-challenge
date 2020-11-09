@@ -1,7 +1,8 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DateTime } from 'luxon';
+import { ReminderService } from 'src/core/services/reminder.service';
 
 @Component({
   selector: 'app-reminder-dialog',
@@ -12,9 +13,12 @@ export class ReminderDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ReminderDialogComponent>,
+    public reminderService: ReminderService,
     @Inject(MAT_DIALOG_DATA) public dataChart: any
 
+
   ) { }
+  @ViewChild('picker') picker: any;
 
   date: DateTime;
   color: String;
@@ -22,21 +26,42 @@ export class ReminderDialogComponent implements OnInit {
 
   public dateControl = new FormControl(new Date(2021, 9, 4, 5, 6, 7));
   public dateControlMinMax = new FormControl(new Date());
-
+  public cityControl = new FormControl();
+  public reminderControl = new FormControl();
 
   ngOnInit(): void {
 
     this.date = this.dataChart.date;
 
     this.dateControl.setValue(this.date.toBSON());
+    this.cityControl.setValue(this.dataChart.city);
+    this.reminderControl.setValue(this.dataChart.reminderText);
 
+  }
+
+  confirm() {
+    let newDate = DateTime.fromJSDate(new Date(this.dateControl.value))
+    console.log(newDate)
+    // console.log(DateTime.fromJSDate(newDate));
+    debugger;
+
+    if (this.dataChart.reminderId) {
+      debugger;
+      this.reminderService.retrieveForecastForGivenDay(this.cityControl.value, this.reminderControl.value, newDate, this.dataChart.reminderId);
+    }
+
+    else {
+      debugger;
+      this.reminderService.retrieveForecastForGivenDay(this.cityControl.value, this.reminderControl.value, newDate);
+    }
 
   }
 
   ngOnDestroy(): void {
     debugger;
     console.log(document.querySelector("#myColorPicker"));
-    // this.color = 
+    this.picker.cancel();
+
     this.dialogRef.close({ data: 'you confirmed' })
   }
 

@@ -7,5 +7,7 @@ export const reset = createAction('[Calendar] Reset to current month');
 
 export const addReminder = createAction('[Calendar] Add reminder', props<{reminder: Reminder}>());
 export const removeReminder = createAction('[Calendar] Remove reminder', props<{reminder: Reminder}>());
+export const editReminder = createAction('[Calendar] Edit reminder', props<{reminder: Reminder}>());
+
 export const resetAllReminders = createAction('[Calendar] Reset all reminders', props<{reminder: Reminder}>());
 export const removeAllRemindersFromDay = createAction('[Calendar] Remove all reminders', props<{reminder: Reminder}>());

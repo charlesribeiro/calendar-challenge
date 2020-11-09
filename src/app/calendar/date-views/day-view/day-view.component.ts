@@ -53,23 +53,16 @@ export class DayViewComponent implements OnInit {
       data: {
 
         date: this.date,
+        city: "cityTest",
+        reminderText: "reminderExample",
 
-        // wit: this.wit,
-        // showGoals: this.showGoals,
-        // witValidate: this.witValidate,
-        // witLabel: this.witLabel,
-        // witBegin: this.witBegin,
-        // witEnd: this.witEnd,
-        // well: currentWell,
-        // language: this.languageService.getLang(),
-        // filterWits: this.filterWits,
       },
       maxWidth: 800,
     });
 
     dialog.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
-      this.retrieveForecastForGivenDay("Boston", this.date);
+      // this.retrieveForecastForGivenDay("Boston", this.date);
 
     });
    

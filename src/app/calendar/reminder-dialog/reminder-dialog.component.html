@@ -3,14 +3,14 @@
 
     <mat-form-field appearance="fill">
         <mat-label>Reminder</mat-label>
-        <input matInput maxlength="30">
+        <input matInput maxlength="30" [formControl]="reminderControl">
     </mat-form-field>
 </p>
 <p>
 
     <mat-form-field appearance="fill">
         <mat-label>City</mat-label>
-        <input matInput>
+        <input matInput [formControl]="cityControl">
     </mat-form-field>
 </p>
 
@@ -23,4 +23,4 @@
 
 <p>Reminder Color<input type="color" id="head" name="myColorPicker" value="#e66465"></p>
 
-<button mat-raised-button color="primary">OK</button>
+<button mat-raised-button color="primary" (click)="confirm()">OK</button>
