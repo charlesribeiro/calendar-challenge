@@ -1,12 +1,19 @@
-<div class="reminder" [ngStyle]="{'background-color': color}" (click)="reminderClick()">
-    <div>@{{date.hour}}:{{date.minute | number: '2.'}} <b>{{reminderText}}</b></div>
+<div class="reminder" [ngStyle]="{'background-color': color}" >
+    <div class ="reminderText" (click)="reminderClick()">@{{date.hour}}:{{date.minute | number: '2.'}} <b>{{reminderText}}
+        <div>{{cityText}}</div>
 
+    </b></div>
 
     <div>
-        <div>{{cityText}}</div>
-    <div> <img class="icon" [src]="weatherUrl" alt="">
-        {{weatherText}}</div>
-</div>
+        <div class="weatherCard"> 
+            <img class="icon" [src]="weatherUrl" alt="">
+            <div class="weatherDescription">{{weatherText}}</div>
+            <button (click)="deleteReminder()">✖</button>
 
-<!-- <div>{{date}}</div> -->
+        </div>
+
+
+    </div>
+
+    <!-- <div>{{date}}</div> -->
 </div>

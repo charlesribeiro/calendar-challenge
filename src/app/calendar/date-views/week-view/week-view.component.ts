@@ -32,7 +32,7 @@ export class WeekViewComponent implements OnInit {
     this.date5 = Utils.getDayToDisplayOnCalendarCell(this.monthsAheadFromToday,this.week, 5);
     this.date6 = Utils.getDayToDisplayOnCalendarCell(this.monthsAheadFromToday,this.week, 6);
 
-    console.log(this.week, this.monthsAheadFromToday, this.date0);
+    // console.log(this.week, this.monthsAheadFromToday, this.date0);
 
   }
 
@@ -45,7 +45,7 @@ export class WeekViewComponent implements OnInit {
     this.date5 = Utils.getDayToDisplayOnCalendarCell(this.monthsAheadFromToday,this.week, 5);
     this.date6 = Utils.getDayToDisplayOnCalendarCell(this.monthsAheadFromToday,this.week, 6);
 
-    console.log(this.week, this.monthsAheadFromToday, this.date0);
+    // console.log(this.week, this.monthsAheadFromToday, this.date0);
   }
 
 }

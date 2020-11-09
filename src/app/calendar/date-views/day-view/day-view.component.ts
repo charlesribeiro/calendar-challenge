@@ -21,7 +21,7 @@ export class DayViewComponent implements OnInit {
   @Input() isWeekend: boolean;
   @Input() date: DateTime;
 
-  reminders$: Observable<Reminder[]>;
+  remindersForThisDate$: Observable<Reminder[]>;
   texto$: Observable<String>;
 
   year$: Observable<any>;
@@ -29,20 +29,20 @@ export class DayViewComponent implements OnInit {
   constructor(private store: Store<State>, private weatherService: WeatherServiceService, public dialog: MatDialog,
   ) {
     this.texto$ = this.store.pipe(select(myActions.getText));
-    // this.reminders$ = this.store.pipe(select(myActions.getRemindersOnDate(this.date)));
-    this.reminders$ = this.store.pipe(select(myActions.getRemindersOnDate, { date: this.date }));
+    // this.remindersForThisDate$ = this.store.pipe(select(myActions.getRemindersOnDate(this.date)));
+    this.remindersForThisDate$ = this.store.pipe(select(myActions.getRemindersOnDate, { date: this.date }));
 
   }
 
   ngOnInit(): void {
     console.log("date", this.date);
-    this.reminders$ = this.store.pipe(select(myActions.getRemindersOnDate, { date: this.date }));
+    this.remindersForThisDate$ = this.store.pipe(select(myActions.getRemindersOnDate, { date: this.date }));
 
   }
 
   ngOnChanges(): void {
-    console.log("date", this.date);
-    this.reminders$ = this.store.pipe(select(myActions.getRemindersOnDate, { date: this.date }));
+    // console.log("date", this.date);
+    this.remindersForThisDate$ = this.store.pipe(select(myActions.getRemindersOnDate, { date: this.date }));
 
   }
 

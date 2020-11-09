@@ -33,7 +33,7 @@ export class ReminderComponent implements OnInit {
     this.date = this.reminder.date;
     this.weatherText = this.reminder.weatherText;
     this.color = this.reminder.color;
-    this.weatherUrl = `http://openweathermap.org/img/wn/${this.reminder.weatherIcon}@2x.png`
+    this.weatherUrl = this.reminder.weatherIcon? `http://openweathermap.org/img/wn/${this.reminder.weatherIcon}@2x.png `: ``;
   }
 
   reminderClick(){
@@ -55,8 +55,11 @@ export class ReminderComponent implements OnInit {
     
     // this.reminderService.retrieveForecastForGivenDay(reminder.)
     
-    // this.store.dispatch(removeReminder({ reminder: this.reminder }));
 
+  }
+
+  deleteReminder(){
+    this.store.dispatch(removeReminder({ reminder: this.reminder }));
   }
 
   

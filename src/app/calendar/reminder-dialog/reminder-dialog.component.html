@@ -1,18 +1,27 @@
-<div>Reminder for {{date.month}}/{{date.day}}</div>
+<div>
+    <h2>
+        {{dataChart.reminderId ? 'Edit': 'Create'}} reminder for {{date.month}}/{{date.day}}
+    </h2>
+</div>
 <p>
 
     <mat-form-field appearance="fill">
         <mat-label>Reminder</mat-label>
-        <input matInput maxlength="30" [formControl]="reminderControl">
+        <input matInput maxlength="30" required [formControl]="reminderControl">
     </mat-form-field>
 </p>
 <p>
 
     <mat-form-field appearance="fill">
         <mat-label>City</mat-label>
-        <input matInput [formControl]="cityControl">
+        <input matInput required [formControl]="cityControl">
     </mat-form-field>
 </p>
+<div class="colorPicker">
+    <p>Reminder Color </p>
+    <input type="color" id="reminderColor" name="myColorPicker" value="#00FF00">
+</div>
+<br>
 
 <mat-form-field>
     <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" [formControl]="dateControl">
@@ -21,6 +30,6 @@
     </ngx-mat-datetime-picker>
 </mat-form-field>
 
-<p>Reminder Color<input type="color" id="reminderColor" name="myColorPicker" value="#e66465"></p>
 
-<button mat-raised-button color="primary" (click)="confirm()">OK</button>
+<br>
+<button mat-raised-button color="primary" [disabled]="!reminderControl.valid || !cityControl.valid" (click)="confirm()">OK</button>

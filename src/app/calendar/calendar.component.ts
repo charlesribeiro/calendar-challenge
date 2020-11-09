@@ -24,7 +24,7 @@ export class CalendarComponent implements OnInit {
 
   constructor(private store: Store<State>, private weatherService: WeatherServiceService) {
     this.texto$ = this.store.pipe(select(myActions.getText));
-    this.reminders$ = this.store.pipe(select(myActions.getReminder));
+    this.reminders$ = this.store.pipe(select(myActions.getAllReminders));
 
   }
 
