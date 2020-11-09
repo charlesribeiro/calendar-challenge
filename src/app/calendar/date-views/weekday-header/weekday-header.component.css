@@ -1,12 +1,18 @@
-.header>p{
-    width: 150px;
+.header>div{
     border: 1px solid;
     padding: 1px;
     background-color: darkblue;
     color: white;
     text-align: center;
+    
 }
 
 .header{
     display: flex;
+    width: 1500px;
+}
+
+.weekDay{
+    width: 150px;
+
 }

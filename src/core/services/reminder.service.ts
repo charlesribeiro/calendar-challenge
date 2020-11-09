@@ -21,13 +21,13 @@ export class ReminderService {
     console.warn(Utils.isWeatherForecastAvailable(date));
     if (Utils.isWeatherForecastAvailable(date)) {
       this.weatherService.retrieveForecastForFiveDays(city).subscribe(res => {
-        // res.list.forEach(weatherInfo => {
-        //   console.log(weatherInfo.weather[0], +weatherInfo.dt * 1000, date);
-        // });
+        res.list.forEach(weatherInfo => {
+          console.log(weatherInfo.weather[0], +weatherInfo.dt * 1000, date);
+        });
 
         validForecasts = res.list.filter(weatherInfo => {
           // console.log(weatherInfo.dt * 1000, date);
-          return Math.abs(+weatherInfo.dt * 1000 - date.toMillis()) <= 3600000 * 3;
+          return Math.abs(+weatherInfo.dt * 1000 - date.toMillis()) > 0;
         })
 
         console.warn("valid forecast", validForecasts)

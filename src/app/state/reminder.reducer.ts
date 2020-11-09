@@ -10,20 +10,20 @@ const _reminderReducer = createReducer(
   initialState,
 
   on(addReminder, (state, { reminder }) => {
-    console.log("state", state);
+    // console.log("state", state);
     return ({ reminders: [...state.reminders, reminder], text: state.text });
   }),
   on(removeReminder, (state, { reminder }) => {
-    console.log("state", state);
-    return ({ reminders: state.reminders.filter((rem)=>rem.id!==reminder.id), text: state.text });
+    // console.log("state", state);
+    return ({ reminders: state.reminders.filter((rem) => rem.id !== reminder.id), text: state.text });
   }),
   on(removeAllRemindersFromDay, (state, { date }) => {
-    console.log("state", state.reminders, date);
-    return ({ reminders: [...state.reminders.filter((rem)=>!(rem.date.day===date.day && rem.date.month===date.month && rem.date.year===date.year))], text: state.text });
+    // console.log("state", state.reminders, date);
+    return ({ reminders: [...state.reminders.filter((rem) => !(rem.date.day === date.day && rem.date.month === date.month && rem.date.year === date.year))], text: state.text });
   }),
   on(editReminder, (state, { reminder }) => {
-    console.log("state", state);
-    return ({ reminders: [...state.reminders.filter((rem)=>rem.id!==reminder.id), reminder], text: state.text });
+    // console.log("state", state);
+    return ({ reminders: [...state.reminders.filter((rem) => rem.id !== reminder.id), reminder], text: state.text });
   }),
 
 );

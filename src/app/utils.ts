@@ -62,11 +62,8 @@ export class Utils {
         return DateTime.local().plus({ months: monthsAheadFromToday }).year;
     }
 
-    // static getWeatherOnDateFromWeatherArray(){
-    //     return 
-    // }
-
     static isWeatherForecastAvailable(date: DateTime) {
+        //if the user creates an appointment in the past or 5 days from now, the OpenWeather API should not be used
         return date.diff(DateTime.local(), ['days']).toObject().days > 0 && date.diff(DateTime.local(), ['days']).toObject().days <= 5;
     }
 

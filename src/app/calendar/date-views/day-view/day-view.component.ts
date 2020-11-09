@@ -24,6 +24,8 @@ export class DayViewComponent implements OnInit {
   remindersForThisDate$: Observable<Reminder[]>;
   texto$: Observable<String>;
 
+  isCurrentMonth: boolean;
+
   year$: Observable<any>;
 
   constructor(private store: Store<State>, private weatherService: WeatherServiceService, public dialog: MatDialog,
@@ -35,13 +37,13 @@ export class DayViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("date", this.date);
+    this.isCurrentMonth = this.date.month == DateTime.local().month && this.date.year == DateTime.local().year;
     this.remindersForThisDate$ = this.store.pipe(select(myActions.getRemindersOnDate, { date: this.date }));
 
   }
 
   ngOnChanges(): void {
-    // console.log("date", this.date);
+    this.isCurrentMonth = this.date.month == DateTime.local().month && this.date.year == DateTime.local().year;
     this.remindersForThisDate$ = this.store.pipe(select(myActions.getRemindersOnDate, { date: this.date }));
 
   }

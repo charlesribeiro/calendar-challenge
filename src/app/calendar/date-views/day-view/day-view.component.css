@@ -13,8 +13,16 @@
 
 }
 
-.dayNumberHeader{
+.dayNumberHeaderCurrentMonth{
     color:red;
+    padding-left: 10px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+.dayNumberHeaderNotCurrentMonth{
+    color:gray;
+    padding-left: 10px;
     font-family: 'Poppins', sans-serif;
     cursor: pointer;
 }
