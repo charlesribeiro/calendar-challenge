@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { DateTime } from 'luxon';
 import { Observable } from 'rxjs';
-import { addReminder } from 'src/app/state/reminder.actions';
+import { addReminder, removeAllRemindersFromDay } from 'src/app/state/reminder.actions';
 import { Utils } from 'src/app/utils';
 import { WeatherServiceService } from 'src/core/services/weather-service.service';
 import { Reminder, State } from '../../../shared/models/reminder';
@@ -117,6 +117,11 @@ export class DayViewComponent implements OnInit {
       return "not available"
     }
 
+
+  }
+
+  deleteAllRemindersFromDay(){
+    this.store.dispatch(removeAllRemindersFromDay({ date: this.date }));
 
   }
 
