@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ReminderDialogComponent } from './reminder-dialog.component';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('ReminderDialogComponent', () => {
   let component: ReminderDialogComponent;
@@ -8,7 +9,13 @@ describe('ReminderDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReminderDialogComponent ]
+      imports: [HttpClientTestingModule,
+      ], 
+      declarations: [ ReminderDialogComponent ],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} }
+    ]
     })
     .compileComponents();
   });

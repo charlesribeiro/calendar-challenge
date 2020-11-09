@@ -25,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomMaterialModule } from './material.module';
 import { ReminderDialogComponent } from './calendar/reminder-dialog/reminder-dialog.component';
-
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +55,10 @@ import { ReminderDialogComponent } from './calendar/reminder-dialog/reminder-dia
     AppRoutingModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

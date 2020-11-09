@@ -14,7 +14,7 @@ export class ReminderDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ReminderDialogComponent>,
     public reminderService: ReminderService,
-    @Inject(MAT_DIALOG_DATA) public dataChart: any
+    @Inject(MAT_DIALOG_DATA) public dataForDialog: any
 
 
   ) { }
@@ -31,11 +31,11 @@ export class ReminderDialogComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.date = this.dataChart.date;
+    this.date = this.dataForDialog.date;
 
     this.dateControl.setValue(this.date.toBSON());
-    this.cityControl.setValue(this.dataChart.city);
-    this.reminderControl.setValue(this.dataChart.reminderText);
+    this.cityControl.setValue(this.dataForDialog.city);
+    this.reminderControl.setValue(this.dataForDialog.reminderText);
 
   }
 
@@ -51,9 +51,9 @@ export class ReminderDialogComponent implements OnInit {
 
 
 
-    if (this.dataChart.reminderId) {
+    if (this.dataForDialog.reminderId) {
       debugger;
-      this.reminderService.retrieveForecastForGivenDay(this.cityControl.value, this.reminderControl.value, newDate, selectedColor, this.dataChart.reminderId);
+      this.reminderService.retrieveForecastForGivenDay(this.cityControl.value, this.reminderControl.value, newDate, selectedColor, this.dataForDialog.reminderId);
     }
 
     else {

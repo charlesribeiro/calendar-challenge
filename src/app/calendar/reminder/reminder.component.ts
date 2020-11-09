@@ -52,10 +52,8 @@ export class ReminderComponent implements OnInit {
       maxWidth: 800,
     });
 
-    
     // this.reminderService.retrieveForecastForGivenDay(reminder.)
     
-
   }
 
   deleteReminder(){
