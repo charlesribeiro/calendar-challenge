@@ -55,29 +55,26 @@ export class DayViewComponent implements OnInit {
     console.warn(Utils.isWeatherForecastAvailable(date));
     if (Utils.isWeatherForecastAvailable(date)) {
       this.weatherService.retrieveForecastForFiveDays(city).subscribe(res => {
-        res.list.forEach(weatherInfo => {
-          console.log(weatherInfo.weather[0], +weatherInfo.dt * 1000, date);
-        });
-
-
+        // res.list.forEach(weatherInfo => {
+        //   console.log(weatherInfo.weather[0], +weatherInfo.dt * 1000, date);
+        // });
 
         validForecasts = res.list.filter(weatherInfo => {
-          console.log(weatherInfo.dt * 1000, date);
-          return Math.abs(+weatherInfo.dt * 1000 - date.ts) <= 3600000 * 3;
+          // console.log(weatherInfo.dt * 1000, date);
+          return Math.abs(+weatherInfo.dt * 1000 - date.toMillis()) <= 3600000 * 3;
         })
 
         console.warn(validForecasts);
         console.log(validForecasts[0].weather[0].main);
 
-        
+      
         let rem: Reminder = {
           reminderText: "Text", date: this.date,
-          city, id: 2, weatherText: validForecasts[0].weather[0].main
+          city, id: Utils.generateUniqueIdForReminder(), weatherText: validForecasts[0].weather[0].main
         };
     
 
         this.store.dispatch(addReminder({ reminder: rem }));
-        console.log("Reminder", this.reminders$)
 
         return validForecasts[0].weather[0].main;
 
@@ -87,6 +84,14 @@ export class DayViewComponent implements OnInit {
       );
     }
     else {
+
+      let rem: Reminder = {
+        reminderText: "Text", date: this.date,
+        city, id: Utils.generateUniqueIdForReminder(), weatherText:"--"
+      };
+  
+
+      this.store.dispatch(addReminder({ reminder: rem }));
       return "not available"
     }
 
