@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DateTime } from 'luxon';
 
@@ -19,10 +20,15 @@ export class ReminderDialogComponent implements OnInit {
   color: String;
   city: String;
 
+  public dateControl = new FormControl(new Date(2021, 9, 4, 5, 6, 7));
+  public dateControlMinMax = new FormControl(new Date());
+
 
   ngOnInit(): void {
 
     this.date = this.dataChart.date;
+
+    this.dateControl.setValue(this.date.toBSON());
 
 
   }

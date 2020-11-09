@@ -1,22 +1,26 @@
-<div>{{date.day}}</div>
-<div>
-    <label for="name">
-        Name
-    </label>
-    <input id="reminderText" type="text" formControlName="reminderName">
-</div>
-<div>
-    <label for="cityText">
-        City
-    </label>
-    <input id="cityText" type="text" formControlName="cityName">
-</div>
+<div>Reminder for {{date.month}}/{{date.day}}</div>
+<p>
 
-<div>
-    <label for="time">
-        Time
-    </label>
-    <input id="time" type="text" formControlName="timeName">
-</div>
+    <mat-form-field appearance="fill">
+        <mat-label>Reminder</mat-label>
+        <input matInput maxlength="30">
+    </mat-form-field>
+</p>
+<p>
 
-<input type="color" id="head" name="myColorPicker" value="#e66465">
+    <mat-form-field appearance="fill">
+        <mat-label>City</mat-label>
+        <input matInput>
+    </mat-form-field>
+</p>
+
+<mat-form-field>
+    <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" [formControl]="dateControl">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <ngx-mat-datetime-picker #picker>
+    </ngx-mat-datetime-picker>
+</mat-form-field>
+
+<p>Reminder Color<input type="color" id="head" name="myColorPicker" value="#e66465"></p>
+
+<button mat-raised-button color="primary">OK</button>

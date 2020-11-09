@@ -8,7 +8,9 @@ import { MonthViewComponent } from './calendar/date-views/month-view/month-view.
 import { WeekViewComponent } from './calendar/date-views/week-view/week-view.component';
 import { DayViewComponent } from './calendar/date-views/day-view/day-view.component';
 import { WeekdayHeaderComponent } from './calendar/date-views/weekday-header/weekday-header.component';
-import { ReminderComponent } from './calendar/reminder/reminder.component'
+import { ReminderComponent } from './calendar/reminder/reminder.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 import { StoreModule } from '@ngrx/store';
 import { reminderReducer } from './state/reminder.reducer';
@@ -21,7 +23,8 @@ import { ReminderEffects } from './state/reminder.effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DemoMaterialModule } from './material.module';
+import { CustomMaterialModule } from './material.module';
+import { ReminderDialogComponent } from './calendar/reminder-dialog/reminder-dialog.component';
 
 @NgModule({
   declarations: [
@@ -32,12 +35,17 @@ import { DemoMaterialModule } from './material.module';
     DayViewComponent,
     WeekdayHeaderComponent,
     ReminderComponent,
+    ReminderDialogComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     HttpClientModule,
-    DemoMaterialModule,
-    StoreModule.forRoot({ reminderContext: reminderReducer }), 
+    CustomMaterialModule,
+    ReactiveFormsModule,
+    
+
+    StoreModule.forRoot({ reminderContext: reminderReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
