@@ -61,4 +61,16 @@ export class Utils {
     static getYear(monthsAheadFromToday: number){
         return DateTime.local().plus({months: monthsAheadFromToday}).year;
     }
+
+    // static getWeatherOnDateFromWeatherArray(){
+    //     return 
+    // }
+
+    static isWeatherForecastAvailable(date: DateTime){
+        // console.warn(">>", date.diff(DateTime.local(), ['days']).toObject().days);
+        // console.warn("", date.diff(DateTime.local(), ['days']).toObject().days>0);
+        // console.warn("", date.diff(DateTime.local(), ['days']).toObject().days<=5 );
+
+        return date.diff(DateTime.local(), ['days']).toObject().days>0 && date.diff(DateTime.local(), ['days']).toObject().days<=5 ;
+    }
 }

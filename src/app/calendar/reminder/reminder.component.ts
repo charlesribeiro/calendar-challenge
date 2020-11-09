@@ -12,12 +12,12 @@ export class ReminderComponent implements OnInit {
 
   @Input() reminder: Reminder;
   
-  reminderText: string = "Reminder";
-  weatherText: string;
+  reminderText: String = "Reminder";
+  weatherText: String;
   date: DateTime;
-  cityText: string = "City";
+  cityText: String = "City";
 
-  color: string = "yellow";
+  color: String = "yellow";
 
   constructor() { }
 
@@ -25,11 +25,14 @@ export class ReminderComponent implements OnInit {
     this.reminderText = this.reminder.reminderText;
     this.cityText = this.reminder.city;
     this.date = this.reminder.date;
+    this.weatherText = this.reminder.weatherText;
   }
 
   reminderClick(){
     console.warn(this.reminder);
   }
+
+  
 
 
 

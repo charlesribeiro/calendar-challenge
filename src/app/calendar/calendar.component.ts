@@ -49,8 +49,10 @@ export class CalendarComponent implements OnInit {
     let rem: Reminder = {
       reminderText: "Texto", date: DateTime.local(),
       city: "New York",
-      id: 1
+      id: 1,
+      weatherText:"--"
     };
+
     this.store.dispatch(addReminder({ reminder: rem }));
     console.log("Reminder", this.texto$)
 
@@ -72,5 +74,8 @@ export class CalendarComponent implements OnInit {
   reset() {
     this.store.dispatch(reset());
   }
+
+ 
+
 
 }
