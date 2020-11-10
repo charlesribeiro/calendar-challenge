@@ -14,7 +14,7 @@ export class ReminderService {
   constructor(public weatherService: WeatherService, private store: Store<State>) { }
 
   retrieveForecastForGivenDay(city: String, reminderText: String, date: DateTime, color: String, idOfReminderToEdit?: number) {
-    debugger;
+    // debugger;
 
     let validForecasts;
 
@@ -33,7 +33,7 @@ export class ReminderService {
         console.warn("valid forecast", validForecasts)
 
         if (idOfReminderToEdit) {
-          debugger;
+          // debugger;
           this.editExistingReminder(reminderText, date, city, idOfReminderToEdit, color, validForecasts[0].weather[0].main, validForecasts[0].weather[0].icon);
 
         }
@@ -50,7 +50,7 @@ export class ReminderService {
     else {
 
       if (idOfReminderToEdit) {
-        debugger;
+        // debugger;
         this.editExistingReminder(reminderText, date, city, idOfReminderToEdit, color);
 
       }
@@ -71,7 +71,7 @@ export class ReminderService {
       city, id: Utils.generateUniqueIdForReminder(), weatherText, color, weatherIcon
     };
 
-    debugger;
+    // debugger;
 
     this.store.dispatch(addReminder({ reminder: rem }));
   }
@@ -83,7 +83,7 @@ export class ReminderService {
       city, id, weatherText, color, weatherIcon
     };
 
-    debugger;
+    // debugger;
 
     this.store.dispatch(editReminder({ reminder: rem }));
   }

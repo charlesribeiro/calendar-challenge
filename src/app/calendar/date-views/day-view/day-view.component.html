@@ -2,7 +2,7 @@
     <p [class.dayNumberHeaderCurrentMonth]="isCurrentMonth" [class.dayNumberHeaderNotCurrentMonth]="!isCurrentMonth"
         (click)="newReminder()">{{date.day}} </p>
     <div *ngIf="(remindersForThisDate$ | async).length">
-        <button class="tooltip" (click)="deleteAllRemindersFromDay()">✖</button>
+        <button class="tooltip" (click)="deleteAllRemindersFromDay()">✖ ALL</button>
 
     </div>
 

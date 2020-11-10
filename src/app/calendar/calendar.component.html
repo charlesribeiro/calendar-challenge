@@ -1,9 +1,11 @@
 <app-month-view [monthsAheadFromToday]="monthsAheadFromToday"></app-month-view>
 
-<button (click)="previous()">previous</button>
-<button (click)="today()">today</button>
-<button (click)="next()">next</button>
-<button (click)="addReminder()">add</button>
+<div style="display: flex;">
+    <div class="customButtons" (click)="previous()">« previous month</div>
+    <div class="customButtons" (click)="today()">current month</div>
+    <div class="customButtons" (click)="next()">next month»</div>
+</div>
+<!-- <button (click)="addReminder()">add</button> -->
 <!-- {{texto$ | async}} -->
 <!-- {{reminders$ | async}} -->
 <!-- 

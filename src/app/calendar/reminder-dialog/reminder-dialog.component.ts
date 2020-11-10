@@ -57,27 +57,24 @@ export class ReminderDialogComponent implements OnInit {
     const colorSpinnerDiv: any = document.getElementById("reminderColor");
 
     const selectedColor = colorSpinnerDiv.value;
-    debugger;
+    // debugger;
 
 
 
     if (this.dataForDialog.reminderId) {
-      debugger;
+      // debugger;
       this.reminderService.retrieveForecastForGivenDay(this.cityControl.value, this.reminderControl.value, newDate, selectedColor, this.dataForDialog.reminderId);
     }
 
     else {
-      debugger;
+      // debugger;
       this.reminderService.retrieveForecastForGivenDay(this.cityControl.value, this.reminderControl.value, newDate, selectedColor);
     }
 
   }
 
   ngOnDestroy(): void {
-    debugger;
-    console.log(document.querySelector("#myColorPicker"));
     this.picker.cancel();
-
     this.dialogRef.close({ data: 'you data' })
   }
 

@@ -1,0 +1,22 @@
+
+
+.customButtons{
+    background-color: #4CAF50;
+    max-height: 200 px;
+    max-width: 200px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+}
+
+@media only screen and (max-width: 900px) {
+    .customButtons{
+        background-color: #4CAF50;
+        max-height: 150px;
+        max-width: 150px;
+        cursor: pointer;
+        padding: 10px;
+        margin: 10px;
+    }
+    
+}

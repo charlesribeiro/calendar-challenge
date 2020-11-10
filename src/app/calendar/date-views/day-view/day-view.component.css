@@ -7,7 +7,7 @@
 .weekend{
     border: 1px solid;
     width: 120px;
-    background-color: silver;
+    background-color: Gainsboro;
     margin: 1px;
 }
 
@@ -23,4 +23,33 @@
     padding-left: 10px;
     font-family: 'Poppins', sans-serif;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
+    .day{
+        border: 1px solid;
+        width: 80px;
+        margin: 1px;
+    }
+    
+    .weekend{
+        border: 1px solid;
+        width: 80px;
+        background-color: Gainsboro;
+        margin: 1px;
+    }
+    
+    .dayNumberHeaderCurrentMonth{
+        color:red;
+        padding-left: 10px;
+        font-family: 'Poppins', sans-serif;
+        cursor: pointer;
+    }
+    
+    .dayNumberHeaderNotCurrentMonth{
+        color:gray;
+        padding-left: 10px;
+        font-family: 'Poppins', sans-serif;
+        cursor: pointer;
+    }
 }
