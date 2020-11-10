@@ -10,8 +10,11 @@ const _reminderReducer = createReducer(
   initialState,
 
   on(addReminder, (state, { reminder }) => {
-    // console.log("state", state);
-    return ({ reminders: [...state.reminders, reminder], text: state.text });
+    // console.log("state", state); 
+
+    let sorteredReminders = [...state.reminders, reminder].sort(function(a, b){return +a.date.toMillis-(+b.date.toMillis)});
+
+    return ({ reminders: sorteredReminders, text: state.text });
   }),
   on(removeReminder, (state, { reminder }) => {
     // console.log("state", state);

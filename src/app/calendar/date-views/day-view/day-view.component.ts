@@ -48,7 +48,7 @@ export class DayViewComponent implements OnInit {
   }
 
   newReminder() {
-    console.log("new reminder", this.date);
+    // console.log("new reminder", this.date);
 
     const dialog = this.dialog.open(ReminderDialogComponent, {
       data: {

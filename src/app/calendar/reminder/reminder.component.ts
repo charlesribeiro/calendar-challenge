@@ -37,7 +37,7 @@ export class ReminderComponent implements OnInit {
   }
 
   reminderClick(){
-    console.warn(this.reminder);
+    // console.warn(this.reminder);
 
     
     const dialog = this.dialog.open(ReminderDialogComponent, {
