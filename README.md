@@ -12,7 +12,11 @@ You can click on any day and a dialog will open where you can input a reminder u
 even delete all reminders from a given day.
 
 ![](Delete.gif)
+
  You can also navigate through months.
+
+ ![](navigate.gif)
+
 
 # Sources
 
