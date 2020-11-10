@@ -43,9 +43,6 @@ export class ReminderService {
 
         }
 
-
-
-
       },
         error => { console.error(error); return ""; }
       );
@@ -63,13 +60,11 @@ export class ReminderService {
 
       }
 
-
     }
 
   }
 
   addNewReminder(reminderText: String, date: DateTime, city: String, color: String, weatherText: String = "", weatherIcon: String = "") {
-
 
     let rem: Reminder = {
       reminderText, date,
@@ -77,7 +72,6 @@ export class ReminderService {
     };
 
     debugger;
-
 
     this.store.dispatch(addReminder({ reminder: rem }));
   }
@@ -90,7 +84,6 @@ export class ReminderService {
     };
 
     debugger;
-
 
     this.store.dispatch(editReminder({ reminder: rem }));
   }

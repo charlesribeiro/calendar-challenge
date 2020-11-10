@@ -42,29 +42,18 @@ export class ReminderComponent implements OnInit {
     
     const dialog = this.dialog.open(ReminderDialogComponent, {
       data: {
-
         date: this.reminder.date,
         city: this.reminder.city,
         reminderText: this.reminder.reminderText,
         reminderId: this.reminder.id
-
       },
       maxWidth: 800,
     });
-
-    // this.reminderService.retrieveForecastForGivenDay(reminder.)
     
   }
 
   deleteReminder(){
     this.store.dispatch(removeReminder({ reminder: this.reminder }));
   }
-
-  
-
-
-
-
-
-
+ 
 }

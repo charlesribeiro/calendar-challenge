@@ -31,7 +31,6 @@ export class DayViewComponent implements OnInit {
   constructor(private store: Store<State>, private weatherService: WeatherService, public dialog: MatDialog,
   ) {
     this.texto$ = this.store.pipe(select(myActions.getText));
-    // this.remindersForThisDate$ = this.store.pipe(select(myActions.getRemindersOnDate(this.date)));
     this.remindersForThisDate$ = this.store.pipe(select(myActions.getRemindersOnDate, { date: this.date }));
 
   }
@@ -50,7 +49,7 @@ export class DayViewComponent implements OnInit {
 
   newReminder() {
     console.log("new reminder", this.date);
-   
+
     const dialog = this.dialog.open(ReminderDialogComponent, {
       data: {
 
@@ -63,12 +62,10 @@ export class DayViewComponent implements OnInit {
     });
 
     dialog.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-      // this.retrieveForecastForGivenDay("Boston", this.date);
-
+      // console.log('The dialog was closed', result);
     });
-   
-   
+
+
 
   }
 
@@ -85,7 +82,7 @@ export class DayViewComponent implements OnInit {
 
         validForecasts = res.list.filter(weatherInfo => {
           // console.log(weatherInfo.dt * 1000, date);
-          return Math.abs(+weatherInfo.dt * 1000 - date.toMillis()) <= 3600000 * 3;
+          return Math.abs(+weatherInfo.dt * 1000 - date.toMillis()) <= 3600000 * 3; //returns the forecasts of 3 days
         })
 
         console.warn(validForecasts);
@@ -122,7 +119,7 @@ export class DayViewComponent implements OnInit {
 
   }
 
-  deleteAllRemindersFromDay(){
+  deleteAllRemindersFromDay() {
     this.store.dispatch(removeAllRemindersFromDay({ date: this.date }));
 
   }

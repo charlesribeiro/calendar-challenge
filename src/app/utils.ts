@@ -3,12 +3,8 @@ import { DateTime } from 'luxon';
 export class Utils {
     static getFirstDayOfTheMonth(year: number, month: number,) {
 
-
         const firstDayOfTheCurrentMonth: DateTime = (DateTime.local(year, month, 1));
-
         return firstDayOfTheCurrentMonth;
-
-
     }
 
     static getFirstDayToShowOnCalendar(date: DateTime) {
@@ -27,12 +23,11 @@ export class Utils {
         // 2: tuesday
         // 3: wednesday
         // 4: thursay
-        // 5: sunday
+        // 5: friday
     }
 
     static getFirstDayToShowOnCalendarView(monthsAheadFromToday: number) {
         //this currently shows the first sunday to show on the calendar view;
-
         return this.getFirstDayToShowOnCalendar(this.getFirstDayOfTheMonth(DateTime.local().plus({ months: monthsAheadFromToday }).year, DateTime.local().plus({ months: monthsAheadFromToday }).month));
     }
 

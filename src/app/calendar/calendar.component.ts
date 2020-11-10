@@ -18,12 +18,12 @@ export class CalendarComponent implements OnInit {
   @Input() monthsAheadFromToday: number;
 
   reminders$: Observable<Reminder[]>;
-  texto$: Observable<String>;
+  // text$: Observable<String>;
 
   year$: Observable<any>;
 
   constructor(private store: Store<State>, private weatherService: WeatherService) {
-    this.texto$ = this.store.pipe(select(myActions.getText));
+    // this.text$ = this.store.pipe(select(myActions.getText));
     this.reminders$ = this.store.pipe(select(myActions.getAllReminders));
 
   }
@@ -35,14 +35,14 @@ export class CalendarComponent implements OnInit {
   addReminder() {
 
     let rem: Reminder = {
-      reminderText: "Texto", date: DateTime.local(),
+      reminderText: "Lorem Ipsum", date: DateTime.local(),
       city: "New York",
       id: 1,
       weatherText:"--"
     };
 
     this.store.dispatch(addReminder({ reminder: rem }));
-    console.log("Reminder", this.texto$)
+    // console.log("Reminder", this.texto$)
 
   }
 

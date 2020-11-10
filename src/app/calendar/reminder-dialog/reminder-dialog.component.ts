@@ -39,6 +39,16 @@ export class ReminderDialogComponent implements OnInit {
 
   }
 
+  ngOnChanges(): void {
+
+    this.date = this.dataForDialog.date;
+
+    this.dateControl.setValue(this.date.toBSON());
+    this.cityControl.setValue(this.dataForDialog.city);
+    this.reminderControl.setValue(this.dataForDialog.reminderText);
+
+  }
+
   confirm() {
     let newDate = DateTime.fromJSDate(new Date(this.dateControl.value))
     console.log(newDate)

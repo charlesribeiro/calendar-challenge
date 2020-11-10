@@ -11,10 +11,8 @@ import { WeekdayHeaderComponent } from './calendar/date-views/weekday-header/wee
 import { ReminderComponent } from './calendar/reminder/reminder.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 import { StoreModule } from '@ngrx/store';
 import { reminderReducer } from './state/reminder.reducer';
-
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment'; // Angular CLI environment
@@ -25,7 +23,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomMaterialModule } from './material.module';
 import { ReminderDialogComponent } from './calendar/reminder-dialog/reminder-dialog.component';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +40,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
     HttpClientModule,
     CustomMaterialModule,
     ReactiveFormsModule,
-    
+
 
     StoreModule.forRoot({ reminderContext: reminderReducer }),
     StoreDevtoolsModule.instrument({
@@ -55,10 +52,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
     AppRoutingModule,
     BrowserAnimationsModule,
   ],
-  providers: [
-    { provide: MAT_DIALOG_DATA, useValue: {} },
-    { provide: MatDialogRef, useValue: {} }
-],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

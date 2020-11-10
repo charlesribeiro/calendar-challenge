@@ -13,7 +13,6 @@ export class WeatherService {
   daysToShowAhead: number = 10;
   API_KEY: string = "f0d3699f3ec772c2a2d478d65fe51c2c";
 
-
   constructor(private httpClient: HttpClient) {
   }
 
@@ -21,11 +20,8 @@ export class WeatherService {
     return this.httpClient.get<WeatherInfo>(this.getUrlForFiveDayForecast(city));
   }
 
-
-
   getUrlForFiveDayForecast(city: String) {
     return `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${this.API_KEY}`
-
   }
 
   getUrlForForecastIcon(weatherCode: string) {

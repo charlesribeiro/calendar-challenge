@@ -1,10 +1,12 @@
-<div [class.weekend]="isWeekend" [class.day]="!isWeekend" >
-    <p [class.dayNumberHeaderCurrentMonth]="isCurrentMonth" [class.dayNumberHeaderNotCurrentMonth]="!isCurrentMonth" (click)="newReminder()">{{date.day}} </p>
-        <div *ngIf="(remindersForThisDate$ | async).length">
-            <button (click)="deleteAllRemindersFromDay()">✖</button>
-        </div>
+<div [class.weekend]="isWeekend" [class.day]="!isWeekend">
+    <p [class.dayNumberHeaderCurrentMonth]="isCurrentMonth" [class.dayNumberHeaderNotCurrentMonth]="!isCurrentMonth"
+        (click)="newReminder()">{{date.day}} </p>
+    <div *ngIf="(remindersForThisDate$ | async).length">
+        <button class="tooltip" (click)="deleteAllRemindersFromDay()">✖</button>
+
+    </div>
 
     <div *ngFor="let singleReminder of (remindersForThisDate$ | async)">
-            <app-reminder [reminder]="singleReminder"></app-reminder>
+        <app-reminder [reminder]="singleReminder"></app-reminder>
     </div>
 </div>
