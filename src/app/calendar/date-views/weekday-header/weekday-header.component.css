@@ -27,7 +27,7 @@
 }
 
 .header{
-    display: flex;
+    display: none;
 }
 
 .weekDay{

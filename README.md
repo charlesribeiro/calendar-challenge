@@ -1,10 +1,10 @@
 # CalendarChallenge
 
-This project is a calendar app that will show a month view of a calendar of the current month made with Angular 10.
+This project is a calendar app that will show a month view of a calendar of the current month. It was made with Angular 10 + NGRX.
 
 # TL;DR
 
-You must have Node.js installed on your computer. On the directoty root, please run `npm install` then `ng serve --open`, and the project will open on your default browser. You can perform the tests with Jusmine by running `ng test`. 
+You must have Node.js installed on your computer. On the directoty root, please run `npm install` then `ng serve --open`, and the project will open on your default browser. You can perform the unit tests with Jusmine by running `ng test`. 
 
 # How to use
 

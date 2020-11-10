@@ -24,16 +24,18 @@ describe('ReminderDialogComponent', () => {
 
   let store: MockStore<any>;
 
+  let submitButton;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, 
-        MatDialogModule, 
-        FormsModule, 
-        MatInputModule, 
+      imports: [HttpClientTestingModule,
+        MatDialogModule,
+        FormsModule,
+        MatInputModule,
         BrowserAnimationsModule,
-        ReactiveFormsModule, 
-        MatButtonModule, 
-        MatFormFieldModule, 
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatFormFieldModule,
         NgxMaterialTimepickerModule,
         NgxMatTimepickerModule,
         NgxMatDatetimePickerModule,
@@ -67,6 +69,8 @@ describe('ReminderDialogComponent', () => {
 
     store = TestBed.inject(MockStore);
     fixture.detectChanges();
+
+    submitButton = fixture.debugElement.query(By.css('button'));
   });
 
   it('should create', () => {
@@ -81,9 +85,8 @@ describe('ReminderDialogComponent', () => {
 
   });
 
-  // it('should have OK button disabled by default', () => {
+  // it('should have OK button enabled once the data is populated', () => {
 
-  //   const button = fixture.debugElement.query(By.css('.submitButton')).nativeElement;
-  //   expect(button.nativeElement.disabled).toBeTruthy();
+  //   expect(submitButton.nativeElement.enabled).toBeTruthy();
   // });
 });
