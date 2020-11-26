@@ -14,7 +14,6 @@ import { ReminderDialogComponent } from '../reminder-dialog/reminder-dialog.comp
 })
 export class ReminderComponent implements OnInit {
 
-
   @Input() reminder: Reminder;
 
   reminderText = 'Reminder';
@@ -38,7 +37,6 @@ export class ReminderComponent implements OnInit {
 
   reminderClick(): void{
     // console.warn(this.reminder);
-
 
     const dialog = this.dialog.open(ReminderDialogComponent, {
       data: {

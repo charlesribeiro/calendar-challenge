@@ -16,7 +16,6 @@ export class ReminderDialogComponent implements OnInit, OnChanges, OnDestroy {
     public reminderService: ReminderService,
     @Inject(MAT_DIALOG_DATA) public dataForDialog: any
 
-
   ) { }
   @ViewChild('picker') picker: any;
 
@@ -51,32 +50,26 @@ export class ReminderDialogComponent implements OnInit, OnChanges, OnDestroy {
 
   confirm(): void {
     const newDate = DateTime.fromJSDate(new Date(this.dateControl.value));
-    console.log(newDate);
-    // console.log(DateTime.fromJSDate(newDate));
 
     const colorSpinnerDiv: any = document.getElementById('reminderColor');
 
     const selectedColor = colorSpinnerDiv.value;
-    // debugger;
-
-
 
     if (this.dataForDialog.reminderId) {
-      // debugger;
       this.reminderService.retrieveForecastForGivenDay(this.cityControl.value, this.reminderControl.value, newDate, selectedColor,
         this.dataForDialog.reminderId);
     }
 
     else {
-      // debugger;
       this.reminderService.retrieveForecastForGivenDay(this.cityControl.value, this.reminderControl.value, newDate, selectedColor);
     }
+
+    this.dialogRef.close({ data: 'you data' });
 
   }
 
   ngOnDestroy(): void {
     this.picker.cancel();
-    this.dialogRef.close({ data: 'you data' });
   }
 
 }

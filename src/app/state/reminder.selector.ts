@@ -14,11 +14,7 @@ export const getText = createSelector(getReminders, (state: State) =>
 export const getRemindersOnDate = createSelector(getReminders, (state: State, date) =>
 
     state.reminders.filter(rem => {
-        // debugger;
-        // console.warn(rem, date, date.date);
         return (rem.date.year === date.date.year && rem.date.month === date.date.month && rem.date.day === date.date.day);
-    })
+    }).sort((a, b) => Number(a.date.toMillis()) - Number(b.date.toMillis()))
 
 );
-
-

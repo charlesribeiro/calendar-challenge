@@ -1,5 +1,4 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { DateTime } from 'luxon';
 import { Utils } from '../../../utils';
 
 @Component({

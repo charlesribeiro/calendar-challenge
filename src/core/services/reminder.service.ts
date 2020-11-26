@@ -3,7 +3,7 @@ import { DateTime } from 'luxon';
 import { Reminder, State } from '../../app/shared/models/reminder';
 import { Utils } from '../../app/utils';
 import { WeatherService } from './weather.service';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { addReminder, editReminder } from '../../app/state/reminder.actions';
 
 @Injectable({
@@ -14,11 +14,9 @@ export class ReminderService {
   constructor(public weatherService: WeatherService, private store: Store<State>) { }
 
   retrieveForecastForGivenDay(city: string, reminderText: string, date: DateTime, color: string, idOfReminderToEdit?: number): void {
-    // debugger;
 
     let validForecasts;
 
-    // console.warn(Utils.isWeatherForecastAvailable(date));
     if (Utils.isWeatherForecastAvailable(date)) {
       this.weatherService.retrieveForecastForFiveDays(city).subscribe(res => {
         // res.list.forEach(weatherInfo => {
@@ -46,7 +44,7 @@ export class ReminderService {
         }
 
       },
-        error => { console.error(error); return ''; }
+        error => ''
       );
     }
     else {

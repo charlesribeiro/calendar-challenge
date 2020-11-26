@@ -1,12 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { increment, decrement, reset, addReminder } from '../state/reminder.actions';
+import { reset, addReminder } from '../state/reminder.actions';
 import { DateTime } from 'luxon';
 import { Reminder, State } from '../shared/models/reminder';
-import { Utils } from '../utils';
 import * as myActions from '../state/reminder.selector';
-import { WeatherService } from '../../core/services/weather.service';
 
 @Component({
   selector: 'app-calendar',
@@ -18,19 +16,16 @@ export class CalendarComponent implements OnInit {
   @Input() monthsAheadFromToday: number;
 
   reminders$: Observable<Reminder[]>;
-  // text$: Observable<String>;
 
   year$: Observable<any>;
 
-  constructor(private store: Store<State>, private weatherService: WeatherService) {
-    // this.text$ = this.store.pipe(select(myActions.getText));
+  constructor(private store: Store<State>) {
     this.reminders$ = this.store.pipe(select(myActions.getAllReminders));
 
   }
 
   ngOnInit(): void {
   }
-
 
   addReminder(): void {
 
@@ -42,10 +37,8 @@ export class CalendarComponent implements OnInit {
     };
 
     this.store.dispatch(addReminder({ reminder: rem }));
-    // console.log("Reminder", this.texto$)
 
   }
-
 
   next(): void {
     this.monthsAheadFromToday++;
@@ -62,8 +55,5 @@ export class CalendarComponent implements OnInit {
   reset(): void {
     this.store.dispatch(reset());
   }
-
-
-
 
 }

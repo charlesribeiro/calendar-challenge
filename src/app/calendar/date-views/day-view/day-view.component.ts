@@ -10,7 +10,6 @@ import * as myActions from '../../../state/reminder.selector';
 import { MatDialog } from '@angular/material/dialog';
 import { ReminderDialogComponent } from '../../reminder-dialog/reminder-dialog.component';
 
-
 @Component({
   selector: 'app-day-view',
   templateUrl: './day-view.component.html',
@@ -62,10 +61,7 @@ export class DayViewComponent implements OnInit, OnChanges {
     });
 
     dialog.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed', result);
     });
-
-
 
   }
 
@@ -73,35 +69,24 @@ export class DayViewComponent implements OnInit, OnChanges {
 
     let validForecasts;
 
-    console.warn(Utils.isWeatherForecastAvailable(date));
     if (Utils.isWeatherForecastAvailable(date)) {
       this.weatherService.retrieveForecastForFiveDays(city).subscribe(res => {
-        // res.list.forEach(weatherInfo => {
-        //   console.log(weatherInfo.weather[0], +weatherInfo.dt * 1000, date);
-        // });
 
         validForecasts = res.list.filter(weatherInfo => {
-          // console.log(weatherInfo.dt * 1000, date);
           return Math.abs(+weatherInfo.dt * 1000 - date.toMillis()) <= 3600000 * 3; // returns the forecasts of 3 days
         });
-
-        console.warn(validForecasts);
-        console.log(validForecasts[0].weather[0].main);
-
 
         const rem: Reminder = {
           reminderText: 'Text', date: this.date,
           city, id: Utils.generateUniqueIdForReminder(), weatherText: validForecasts[0].weather[0].main
         };
 
-
         this.store.dispatch(addReminder({ reminder: rem }));
 
         return validForecasts[0].weather[0].main;
 
-
       },
-        error => { console.error(error); return ''; }
+        error => ''
       );
     }
     else {
@@ -111,11 +96,9 @@ export class DayViewComponent implements OnInit, OnChanges {
         city, id: Utils.generateUniqueIdForReminder(), weatherText: '--'
       };
 
-
       this.store.dispatch(addReminder({ reminder: rem }));
       return 'not available';
     }
-
 
   }
 

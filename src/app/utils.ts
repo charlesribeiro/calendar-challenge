@@ -15,9 +15,7 @@ export class Utils {
                 return dateToDisplay;
             default:
                 return dateToDisplay.minus({ days: date.weekday });
-
         }
-
         // 7: sunday
         // 1: monday
         // 2: tuesday
@@ -33,20 +31,6 @@ export class Utils {
                 DateTime.local().plus({ months: monthsAheadFromToday }).year, DateTime.local().plus({ months: monthsAheadFromToday }).month
             )
         );
-    }
-
-    static getDaysToDisplayByWeek(monthsAheadFromToday: number, weekNumberInMonth: number): void {
-
-        console.log(this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({ weeks: weekNumberInMonth }).plus({ days: 0 }));
-        console.log(this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({ weeks: weekNumberInMonth }).plus({ days: 1 }));
-        console.log(this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({ weeks: weekNumberInMonth }).plus({ days: 2 }));
-        console.log(this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({ weeks: weekNumberInMonth }).plus({ days: 3 }));
-        console.log(this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({ weeks: weekNumberInMonth }).plus({ days: 4 }));
-        console.log(this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({ weeks: weekNumberInMonth }).plus({ days: 5 }));
-        console.log(this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({ weeks: weekNumberInMonth }).plus({ days: 6 }));
-        console.log('----');
-
-
     }
 
     static getDayToDisplayOnCalendarCell(monthsAheadFromToday: number, weekNumberInMonth: number, weekDayFromSunday: number): DateTime {

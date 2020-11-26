@@ -12,7 +12,6 @@ export class WeekdayHeaderComponent implements OnInit, OnChanges {
   monthToDisplay = '';
   yearToDisplay = '';
 
-
   constructor() { }
 
   ngOnInit(): void {

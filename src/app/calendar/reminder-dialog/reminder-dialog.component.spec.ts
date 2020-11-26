@@ -17,7 +17,6 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
-
 describe('ReminderDialogComponent', () => {
   let component: ReminderDialogComponent;
   let fixture: ComponentFixture<ReminderDialogComponent>;

@@ -41,7 +41,6 @@ import { ReminderDialogComponent } from './calendar/reminder-dialog/reminder-dia
     CustomMaterialModule,
     ReactiveFormsModule,
 
-
     StoreModule.forRoot({ reminderContext: reminderReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

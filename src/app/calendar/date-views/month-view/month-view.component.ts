@@ -13,7 +13,6 @@ export class MonthViewComponent implements OnInit {
 
   constructor() { }
 
-
   ngOnInit(): void {
   }
 
