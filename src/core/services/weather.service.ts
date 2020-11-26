@@ -16,15 +16,15 @@ export class WeatherService {
   constructor(private httpClient: HttpClient) {
   }
 
-  retrieveForecastForFiveDays(city: String): Observable<WeatherInfo> {
+  retrieveForecastForFiveDays(city: string): Observable<WeatherInfo> {
     return this.httpClient.get<WeatherInfo>(this.getUrlForFiveDayForecast(city));
   }
 
-  getUrlForFiveDayForecast(city: String) {
+  getUrlForFiveDayForecast(city: string): string{
     return `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${this.API_KEY}`;
   }
 
-  getUrlForForecastIcon(weatherCode: string) {
+  getUrlForForecastIcon(weatherCode: string): string{
     return `http://openweathermap.org/img/wn/${weatherCode}@2x.png`;
   }
 }

@@ -13,7 +13,7 @@ export class ReminderService {
 
   constructor(public weatherService: WeatherService, private store: Store<State>) { }
 
-  retrieveForecastForGivenDay(city: String, reminderText: String, date: DateTime, color: String, idOfReminderToEdit?: number) {
+  retrieveForecastForGivenDay(city: string, reminderText: string, date: DateTime, color: string, idOfReminderToEdit?: number): void {
     // debugger;
 
     let validForecasts;
@@ -22,7 +22,7 @@ export class ReminderService {
     if (Utils.isWeatherForecastAvailable(date)) {
       this.weatherService.retrieveForecastForFiveDays(city).subscribe(res => {
         // res.list.forEach(weatherInfo => {
-          // console.log(weatherInfo.weather[0], +weatherInfo.dt * 1000, date);
+        // console.log(weatherInfo.weather[0], +weatherInfo.dt * 1000, date);
         // });
 
         validForecasts = res.list.filter(weatherInfo => {
@@ -34,12 +34,14 @@ export class ReminderService {
 
         if (idOfReminderToEdit) {
           // debugger;
-          this.editExistingReminder(reminderText, date, city, idOfReminderToEdit, color, validForecasts[0].weather[0].main, validForecasts[0].weather[0].icon);
+          this.editExistingReminder(reminderText, date, city, idOfReminderToEdit, color,
+            validForecasts[0].weather[0].main, validForecasts[0].weather[0].icon);
 
         }
 
         else {
-          this.addNewReminder(reminderText, date, city, color, validForecasts[0].weather[0].main, validForecasts[0].weather[0].icon);
+          this.addNewReminder(reminderText, date, city, color,
+            validForecasts[0].weather[0].main, validForecasts[0].weather[0].icon);
 
         }
 
@@ -64,7 +66,8 @@ export class ReminderService {
 
   }
 
-  addNewReminder(reminderText: String, date: DateTime, city: String, color: String, weatherText: String = '', weatherIcon: String = '') {
+  addNewReminder(reminderText: string, date: DateTime, city: string, color: string,
+                 weatherText: string = '', weatherIcon: string = ''): void {
 
     const rem: Reminder = {
       reminderText, date,
@@ -76,7 +79,8 @@ export class ReminderService {
     this.store.dispatch(addReminder({ reminder: rem }));
   }
 
-  editExistingReminder(reminderText: String, date: DateTime, city: String, id: number, color: String, weatherText: String = '', weatherIcon: String = '') {
+  editExistingReminder(reminderText: string, date: DateTime, city: string, id: number, color: string,
+                       weatherText: string = '', weatherIcon: string = ''): void {
 
     const rem: Reminder = {
       reminderText, date,

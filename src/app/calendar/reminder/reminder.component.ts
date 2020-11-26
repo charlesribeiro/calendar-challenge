@@ -17,13 +17,13 @@ export class ReminderComponent implements OnInit {
 
   @Input() reminder: Reminder;
 
-  reminderText: String = 'Reminder';
-  weatherText: String;
+  reminderText = 'Reminder';
+  weatherText: string;
   date: DateTime;
-  cityText: String = 'City';
-  weatherUrl: String = '';
+  cityText = 'City';
+  weatherUrl = '';
 
-  color: String = 'yellow';
+  color = 'yellow';
 
   constructor(private store: Store<State>, public reminderService: ReminderService, public dialog: MatDialog) { }
 
@@ -36,7 +36,7 @@ export class ReminderComponent implements OnInit {
     this.weatherUrl = this.reminder.weatherIcon ? `http://openweathermap.org/img/wn/${this.reminder.weatherIcon}@2x.png ` : ``;
   }
 
-  reminderClick(){
+  reminderClick(): void{
     // console.warn(this.reminder);
 
 
@@ -52,7 +52,7 @@ export class ReminderComponent implements OnInit {
 
   }
 
-  deleteReminder(){
+  deleteReminder(): void{
     this.store.dispatch(removeReminder({ reminder: this.reminder }));
   }
 

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnChanges, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DateTime } from 'luxon';
@@ -9,7 +9,7 @@ import { ReminderService } from '../../../core/services/reminder.service';
   templateUrl: './reminder-dialog.component.html',
   styleUrls: ['./reminder-dialog.component.css']
 })
-export class ReminderDialogComponent implements OnInit {
+export class ReminderDialogComponent implements OnInit, OnChanges, OnDestroy {
 
   constructor(
     public dialogRef: MatDialogRef<ReminderDialogComponent>,
@@ -21,8 +21,8 @@ export class ReminderDialogComponent implements OnInit {
   @ViewChild('picker') picker: any;
 
   date: DateTime;
-  color: String;
-  city: String;
+  color: string;
+  city: string;
 
   public dateControl = new FormControl(new Date(2021, 9, 4, 5, 6, 7));
   public dateControlMinMax = new FormControl(new Date());
@@ -49,7 +49,7 @@ export class ReminderDialogComponent implements OnInit {
 
   }
 
-  confirm() {
+  confirm(): void {
     const newDate = DateTime.fromJSDate(new Date(this.dateControl.value));
     console.log(newDate);
     // console.log(DateTime.fromJSDate(newDate));
@@ -63,7 +63,8 @@ export class ReminderDialogComponent implements OnInit {
 
     if (this.dataForDialog.reminderId) {
       // debugger;
-      this.reminderService.retrieveForecastForGivenDay(this.cityControl.value, this.reminderControl.value, newDate, selectedColor, this.dataForDialog.reminderId);
+      this.reminderService.retrieveForecastForGivenDay(this.cityControl.value, this.reminderControl.value, newDate, selectedColor,
+        this.dataForDialog.reminderId);
     }
 
     else {

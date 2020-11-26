@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { DateTime } from 'luxon';
 import { Observable } from 'rxjs';
@@ -16,13 +16,13 @@ import { ReminderDialogComponent } from '../../reminder-dialog/reminder-dialog.c
   templateUrl: './day-view.component.html',
   styleUrls: ['./day-view.component.css']
 })
-export class DayViewComponent implements OnInit {
+export class DayViewComponent implements OnInit, OnChanges {
 
   @Input() isWeekend: boolean;
   @Input() date: DateTime;
 
   remindersForThisDate$: Observable<Reminder[]>;
-  texto$: Observable<String>;
+  texto$: Observable<string>;
 
   isCurrentMonth: boolean;
 
@@ -36,18 +36,18 @@ export class DayViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isCurrentMonth = this.date.month == DateTime.local().month && this.date.year == DateTime.local().year;
+    this.isCurrentMonth = this.date.month === DateTime.local().month && this.date.year === DateTime.local().year;
     this.remindersForThisDate$ = this.store.pipe(select(myActions.getRemindersOnDate, { date: this.date }));
 
   }
 
   ngOnChanges(): void {
-    this.isCurrentMonth = this.date.month == DateTime.local().month && this.date.year == DateTime.local().year;
+    this.isCurrentMonth = this.date.month === DateTime.local().month && this.date.year === DateTime.local().year;
     this.remindersForThisDate$ = this.store.pipe(select(myActions.getRemindersOnDate, { date: this.date }));
 
   }
 
-  newReminder() {
+  newReminder(): void {
     // console.log("new reminder", this.date);
 
     const dialog = this.dialog.open(ReminderDialogComponent, {
@@ -69,7 +69,7 @@ export class DayViewComponent implements OnInit {
 
   }
 
-  retrieveForecastForGivenDay(city: String, date: DateTime) {
+  retrieveForecastForGivenDay(city: string, date: DateTime): string {
 
     let validForecasts;
 
@@ -119,7 +119,7 @@ export class DayViewComponent implements OnInit {
 
   }
 
-  deleteAllRemindersFromDay() {
+  deleteAllRemindersFromDay(): void {
     this.store.dispatch(removeAllRemindersFromDay({ date: this.date }));
 
   }

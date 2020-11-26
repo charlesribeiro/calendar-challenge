@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Utils } from '../../../utils';
 
 @Component({
@@ -6,7 +6,7 @@ import { Utils } from '../../../utils';
   templateUrl: './weekday-header.component.html',
   styleUrls: ['./weekday-header.component.css']
 })
-export class WeekdayHeaderComponent implements OnInit {
+export class WeekdayHeaderComponent implements OnInit, OnChanges {
 
   @Input() monthsAheadFromToday: number;
   monthToDisplay = '';

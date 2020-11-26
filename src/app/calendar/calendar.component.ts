@@ -32,7 +32,7 @@ export class CalendarComponent implements OnInit {
   }
 
 
-  addReminder() {
+  addReminder(): void {
 
     const rem: Reminder = {
       reminderText: 'Lorem Ipsum', date: DateTime.local(),
@@ -47,19 +47,19 @@ export class CalendarComponent implements OnInit {
   }
 
 
-  next() {
+  next(): void {
     this.monthsAheadFromToday++;
   }
 
-  previous() {
+  previous(): void {
     this.monthsAheadFromToday--;
   }
 
-  today() {
+  today(): void {
     this.monthsAheadFromToday = 0;
   }
 
-  reset() {
+  reset(): void {
     this.store.dispatch(reset());
   }
 

@@ -1,7 +1,7 @@
 export interface WeatherInfo{
     city: any[];
     cnt: number;
-    code: String;
+    code: string;
     list: SingleForecastInfo[];
     message: any;
 }
@@ -9,7 +9,7 @@ export interface WeatherInfo{
 export interface SingleForecastInfo{
     clouds: any;
     dt: number;
-    dt_txt: String;
+    dt_txt: string;
     main: MainWeatherInfo[];
     pop: any;
     sys: any;
@@ -31,8 +31,8 @@ export interface MainWeatherInfo{
 }
 
 export interface WeatherDescription{
-    description: String;
-    icon: String;
+    description: string;
+    icon: string;
     id: number;
-    main: String;
+    main: string;
 }

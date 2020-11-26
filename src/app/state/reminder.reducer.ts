@@ -1,12 +1,10 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import { DateTime } from 'luxon';
-import { Reminder, State } from '../shared/models/reminder';
-import { Utils } from '../utils';
+import { State } from '../shared/models/reminder';
 import { addReminder, editReminder, removeAllRemindersFromDay, removeReminder } from './reminder.actions';
 
 export const initialState: State = { reminders: [], text: 'Ok' };
 
-const _reminderReducer = createReducer(
+const REMINDER_REDUCER = createReducer(
   initialState,
 
   on(addReminder, (state, { reminder }) => {
@@ -22,7 +20,8 @@ const _reminderReducer = createReducer(
   }),
   on(removeAllRemindersFromDay, (state, { date }) => {
     // console.log("state", state.reminders, date);
-    return ({ reminders: [...state.reminders.filter((rem) => !(rem.date.day === date.day && rem.date.month === date.month && rem.date.year === date.year))], text: state.text });
+    return ({ reminders: [...state.reminders.filter((rem) =>
+      !(rem.date.day === date.day && rem.date.month === date.month && rem.date.year === date.year))], text: state.text });
   }),
   on(editReminder, (state, { reminder }) => {
     // console.log("state", state);
@@ -32,5 +31,5 @@ const _reminderReducer = createReducer(
 );
 
 export function reminderReducer(state: State | undefined, action: Action): State {
-  return _reminderReducer(state, action);
+  return REMINDER_REDUCER(state, action);
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { DateTime } from 'luxon';
 import { Utils } from '../../../utils';
 
@@ -7,7 +7,7 @@ import { Utils } from '../../../utils';
   templateUrl: './week-view.component.html',
   styleUrls: ['./week-view.component.css']
 })
-export class WeekViewComponent implements OnInit {
+export class WeekViewComponent implements OnInit, OnChanges {
 
   @Input() monthsAheadFromToday: number;
   @Input() week: number;

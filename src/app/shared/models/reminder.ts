@@ -1,17 +1,17 @@
 import { DateTime } from 'luxon';
 
 export interface Reminder {
-    reminderText: String;
-    color?: String;
-    city: String;
+    reminderText: string;
+    color?: string;
+    city: string;
     date: DateTime;
     id: number;
-    weatherText: String;
-    weatherIcon?: String;
+    weatherText: string;
+    weatherIcon?: string;
 }
 
 export interface State{
     reminders: Reminder [];
-    text: String;
+    text: string;
     // currentDate : DateTime;
 }
