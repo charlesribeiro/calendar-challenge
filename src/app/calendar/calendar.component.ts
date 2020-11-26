@@ -2,10 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { increment, decrement, reset, addReminder } from '../state/reminder.actions';
-import { DateTime } from "luxon";
+import { DateTime } from 'luxon';
 import { Reminder, State } from '../shared/models/reminder';
 import { Utils } from '../utils';
-import * as myActions from '../state/reminder.selector'
+import * as myActions from '../state/reminder.selector';
 import { WeatherService } from '../../core/services/weather.service';
 
 @Component({
@@ -34,11 +34,11 @@ export class CalendarComponent implements OnInit {
 
   addReminder() {
 
-    let rem: Reminder = {
-      reminderText: "Lorem Ipsum", date: DateTime.local(),
-      city: "New York",
+    const rem: Reminder = {
+      reminderText: 'Lorem Ipsum', date: DateTime.local(),
+      city: 'New York',
       id: 1,
-      weatherText:"--"
+      weatherText: '--'
     };
 
     this.store.dispatch(addReminder({ reminder: rem }));
@@ -63,7 +63,7 @@ export class CalendarComponent implements OnInit {
     this.store.dispatch(reset());
   }
 
- 
+
 
 
 }

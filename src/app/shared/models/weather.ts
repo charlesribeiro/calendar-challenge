@@ -20,19 +20,19 @@ export interface SingleForecastInfo{
 
 export interface MainWeatherInfo{
     feels_like: number;
-    grnd_level: number
-    humidity: number
-    pressure: number
-    sea_level: number
-    temp: number
-    temp_kf: number
-    temp_max: number
-    temp_min: number
+    grnd_level: number;
+    humidity: number;
+    pressure: number;
+    sea_level: number;
+    temp: number;
+    temp_kf: number;
+    temp_max: number;
+    temp_min: number;
 }
 
 export interface WeatherDescription{
-    description: String
-    icon: String
-    id: number
-    main: String
+    description: String;
+    icon: String;
+    id: number;
+    main: String;
 }

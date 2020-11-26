@@ -9,8 +9,8 @@ import { Utils } from '../../../utils';
 export class WeekdayHeaderComponent implements OnInit {
 
   @Input() monthsAheadFromToday: number;
-  monthToDisplay: string = "";
-  yearToDisplay: string = "";
+  monthToDisplay = '';
+  yearToDisplay = '';
 
 
   constructor() { }

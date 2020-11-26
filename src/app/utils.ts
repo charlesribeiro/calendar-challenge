@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 
 export class Utils {
-    static getFirstDayOfTheMonth(year: number, month: number,) {
+    static getFirstDayOfTheMonth(year: number, month: number, ) {
 
         const firstDayOfTheCurrentMonth: DateTime = (DateTime.local(year, month, 1));
         return firstDayOfTheCurrentMonth;
@@ -9,12 +9,12 @@ export class Utils {
 
     static getFirstDayToShowOnCalendar(date: DateTime) {
 
-        let dateToDisplay: DateTime = date;
+        const dateToDisplay: DateTime = date;
         switch (date.weekday) {
-            case 7: //sunday
+            case 7: // sunday
                 return dateToDisplay;
             default:
-                return dateToDisplay.minus({ days: date.weekday })
+                return dateToDisplay.minus({ days: date.weekday });
 
         }
 
@@ -27,12 +27,12 @@ export class Utils {
     }
 
     static getFirstDayToShowOnCalendarView(monthsAheadFromToday: number) {
-        //this currently shows the first sunday to show on the calendar view;
+        // this currently shows the first sunday to show on the calendar view;
         return this.getFirstDayToShowOnCalendar(this.getFirstDayOfTheMonth(DateTime.local().plus({ months: monthsAheadFromToday }).year, DateTime.local().plus({ months: monthsAheadFromToday }).month));
     }
 
     static getDaysToDisplayByWeek(monthsAheadFromToday: number, weekNumberInMonth: number) {
-        console.log("first day", monthsAheadFromToday, weekNumberInMonth, this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({ weeks: weekNumberInMonth }));
+        console.log('first day', monthsAheadFromToday, weekNumberInMonth, this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({ weeks: weekNumberInMonth }));
 
         console.log(this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({ weeks: weekNumberInMonth }).plus({ days: 0 }));
         console.log(this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({ weeks: weekNumberInMonth }).plus({ days: 1 }));
@@ -41,7 +41,7 @@ export class Utils {
         console.log(this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({ weeks: weekNumberInMonth }).plus({ days: 4 }));
         console.log(this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({ weeks: weekNumberInMonth }).plus({ days: 5 }));
         console.log(this.getFirstDayToShowOnCalendarView(monthsAheadFromToday).plus({ weeks: weekNumberInMonth }).plus({ days: 6 }));
-        console.log("----");
+        console.log('----');
 
 
     }
@@ -58,7 +58,7 @@ export class Utils {
     }
 
     static isWeatherForecastAvailable(date: DateTime) {
-        //if the user creates an appointment in the past or 5 days from now, the OpenWeather API should not be used
+        // if the user creates an appointment in the past or 5 days from now, the OpenWeather API should not be used
         return date.diff(DateTime.local(), ['days']).toObject().days > 0 && date.diff(DateTime.local(), ['days']).toObject().days <= 5;
     }
 

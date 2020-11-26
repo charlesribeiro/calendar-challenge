@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DateTime } from 'luxon';
 import { Reminder, State } from '../../app/shared/models/reminder';
-import { Utils } from '../../app/utils'
+import { Utils } from '../../app/utils';
 import { WeatherService } from './weather.service';
 import { select, Store } from '@ngrx/store';
 import { addReminder, editReminder } from '../../app/state/reminder.actions';
@@ -28,7 +28,7 @@ export class ReminderService {
         validForecasts = res.list.filter(weatherInfo => {
           // console.log(weatherInfo.dt * 1000, date);
           return Math.abs(+weatherInfo.dt * 1000 - date.toMillis()) > 0;
-        })
+        });
 
         // console.warn("valid forecast", validForecasts)
 
@@ -44,7 +44,7 @@ export class ReminderService {
         }
 
       },
-        error => { console.error(error); return ""; }
+        error => { console.error(error); return ''; }
       );
     }
     else {
@@ -64,9 +64,9 @@ export class ReminderService {
 
   }
 
-  addNewReminder(reminderText: String, date: DateTime, city: String, color: String, weatherText: String = "", weatherIcon: String = "") {
+  addNewReminder(reminderText: String, date: DateTime, city: String, color: String, weatherText: String = '', weatherIcon: String = '') {
 
-    let rem: Reminder = {
+    const rem: Reminder = {
       reminderText, date,
       city, id: Utils.generateUniqueIdForReminder(), weatherText, color, weatherIcon
     };
@@ -76,9 +76,9 @@ export class ReminderService {
     this.store.dispatch(addReminder({ reminder: rem }));
   }
 
-  editExistingReminder(reminderText: String, date: DateTime, city: String, id: number, color: String, weatherText: String = "", weatherIcon: String = "") {
+  editExistingReminder(reminderText: String, date: DateTime, city: String, id: number, color: String, weatherText: String = '', weatherIcon: String = '') {
 
-    let rem: Reminder = {
+    const rem: Reminder = {
       reminderText, date,
       city, id, weatherText, color, weatherIcon
     };

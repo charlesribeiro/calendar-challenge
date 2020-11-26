@@ -10,8 +10,8 @@ import { WeatherInfo } from '../../app/shared/models/weather';
 export class WeatherService {
 
   weatherUrl: string;
-  daysToShowAhead: number = 10;
-  API_KEY: string = "f0d3699f3ec772c2a2d478d65fe51c2c";
+  daysToShowAhead = 10;
+  API_KEY = 'f0d3699f3ec772c2a2d478d65fe51c2c';
 
   constructor(private httpClient: HttpClient) {
   }
@@ -21,10 +21,10 @@ export class WeatherService {
   }
 
   getUrlForFiveDayForecast(city: String) {
-    return `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${this.API_KEY}`
+    return `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${this.API_KEY}`;
   }
 
   getUrlForForecastIcon(weatherCode: string) {
-    return `http://openweathermap.org/img/wn/${weatherCode}@2x.png`
+    return `http://openweathermap.org/img/wn/${weatherCode}@2x.png`;
   }
 }

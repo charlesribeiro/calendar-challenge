@@ -4,15 +4,15 @@ import { Reminder, State } from '../shared/models/reminder';
 import { Utils } from '../utils';
 import { addReminder, editReminder, removeAllRemindersFromDay, removeReminder } from './reminder.actions';
 
-export const initialState: State = { reminders: [], text: "Ok" };
+export const initialState: State = { reminders: [], text: 'Ok' };
 
 const _reminderReducer = createReducer(
   initialState,
 
   on(addReminder, (state, { reminder }) => {
-    // console.log("state", state); 
+    // console.log("state", state);
 
-    let sorteredReminders = [...state.reminders, reminder].sort(function(a, b){return +a.date.toMillis-(+b.date.toMillis)});
+    const sorteredReminders = [...state.reminders, reminder].sort(function(a, b){return +a.date.toMillis - (+b.date.toMillis); });
 
     return ({ reminders: sorteredReminders, text: state.text });
   }),

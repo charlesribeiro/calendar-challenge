@@ -47,13 +47,13 @@ describe('ReminderDialogComponent', () => {
       declarations: [ReminderDialogComponent],
       providers: [
         provideMockStore(
-          { initialState: initialState }),
+          { initialState }),
         {
           provide: MAT_DIALOG_DATA, useValue: {
 
             date: DateTime.local(),
-            city: "Lima",
-            reminderText: "Reminder",
+            city: 'Lima',
+            reminderText: 'Reminder',
 
           },
         },

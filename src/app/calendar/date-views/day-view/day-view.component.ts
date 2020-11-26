@@ -7,7 +7,7 @@ import { Utils } from '../../../utils';
 import { WeatherService } from '../../../../core/services/weather.service';
 import { Reminder, State } from '../../../shared/models/reminder';
 import * as myActions from '../../../state/reminder.selector';
-import { MatDialog } from "@angular/material/dialog";
+import { MatDialog } from '@angular/material/dialog';
 import { ReminderDialogComponent } from '../../reminder-dialog/reminder-dialog.component';
 
 
@@ -54,8 +54,8 @@ export class DayViewComponent implements OnInit {
       data: {
 
         date: this.date,
-        city: "",
-        reminderText: "",
+        city: '',
+        reminderText: '',
 
       },
       maxWidth: 800,
@@ -82,15 +82,15 @@ export class DayViewComponent implements OnInit {
 
         validForecasts = res.list.filter(weatherInfo => {
           // console.log(weatherInfo.dt * 1000, date);
-          return Math.abs(+weatherInfo.dt * 1000 - date.toMillis()) <= 3600000 * 3; //returns the forecasts of 3 days
-        })
+          return Math.abs(+weatherInfo.dt * 1000 - date.toMillis()) <= 3600000 * 3; // returns the forecasts of 3 days
+        });
 
         console.warn(validForecasts);
         console.log(validForecasts[0].weather[0].main);
 
 
-        let rem: Reminder = {
-          reminderText: "Text", date: this.date,
+        const rem: Reminder = {
+          reminderText: 'Text', date: this.date,
           city, id: Utils.generateUniqueIdForReminder(), weatherText: validForecasts[0].weather[0].main
         };
 
@@ -101,19 +101,19 @@ export class DayViewComponent implements OnInit {
 
 
       },
-        error => { console.error(error); return ""; }
+        error => { console.error(error); return ''; }
       );
     }
     else {
 
-      let rem: Reminder = {
-        reminderText: "Text", date: this.date,
-        city, id: Utils.generateUniqueIdForReminder(), weatherText: "--"
+      const rem: Reminder = {
+        reminderText: 'Text', date: this.date,
+        city, id: Utils.generateUniqueIdForReminder(), weatherText: '--'
       };
 
 
       this.store.dispatch(addReminder({ reminder: rem }));
-      return "not available"
+      return 'not available';
     }
 
 

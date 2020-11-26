@@ -11,7 +11,7 @@ export interface Reminder {
 }
 
 export interface State{
-    reminders : Reminder [];
+    reminders: Reminder [];
     text: String;
     // currentDate : DateTime;
 }

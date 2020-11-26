@@ -50,11 +50,11 @@ export class ReminderDialogComponent implements OnInit {
   }
 
   confirm() {
-    let newDate = DateTime.fromJSDate(new Date(this.dateControl.value))
-    console.log(newDate)
+    const newDate = DateTime.fromJSDate(new Date(this.dateControl.value));
+    console.log(newDate);
     // console.log(DateTime.fromJSDate(newDate));
 
-    const colorSpinnerDiv: any = document.getElementById("reminderColor");
+    const colorSpinnerDiv: any = document.getElementById('reminderColor');
 
     const selectedColor = colorSpinnerDiv.value;
     // debugger;
@@ -75,7 +75,7 @@ export class ReminderDialogComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.picker.cancel();
-    this.dialogRef.close({ data: 'you data' })
+    this.dialogRef.close({ data: 'you data' });
   }
 
 }

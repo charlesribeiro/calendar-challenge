@@ -9,7 +9,7 @@ describe('ReminderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ReminderComponent ],
-     
+
     })
     .compileComponents();
   });
