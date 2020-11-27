@@ -11,21 +11,24 @@ export class Utils {
 
         const dateToDisplay: DateTime = date;
         switch (date.weekday) {
-            case 7: // sunday
+            case 7:
                 return dateToDisplay;
             default:
                 return dateToDisplay.minus({ days: date.weekday });
         }
+
+        /*
         // 7: sunday
         // 1: monday
         // 2: tuesday
         // 3: wednesday
         // 4: thursay
         // 5: friday
+        */
     }
 
     static getFirstDayToShowOnCalendarView(monthsAheadFromToday: number): DateTime {
-        // this currently shows the first sunday to show on the calendar view;
+        /* this currently shows the first sunday to show on the calendar view */
         return this.getFirstDayToShowOnCalendar(
             this.getFirstDayOfTheMonth(
                 DateTime.local().plus({ months: monthsAheadFromToday }).year, DateTime.local().plus({ months: monthsAheadFromToday }).month
@@ -47,7 +50,7 @@ export class Utils {
     }
 
     static isWeatherForecastAvailable(date: DateTime): boolean {
-        // if the user creates an appointment in the past or 5 days from now, the OpenWeather API should not be used
+        /* if the user creates an appointment in the past or 5 days from now, the OpenWeather API should not be used*/
         return date.diff(DateTime.local(), ['days']).toObject().days > 0 && date.diff(DateTime.local(), ['days']).toObject().days <= 5;
     }
 

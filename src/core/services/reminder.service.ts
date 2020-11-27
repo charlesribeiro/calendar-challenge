@@ -24,17 +24,14 @@ export class ReminderService {
           return Math.abs(+weatherInfo.dt * 1000 - date.toMillis()) > 0;
         });
 
-
         if (idOfReminderToEdit) {
           this.editExistingReminder(reminderText, date, city, idOfReminderToEdit, color,
             validForecasts[0].weather[0].main, validForecasts[0].weather[0].icon);
-
         }
 
         else {
           this.addNewReminder(reminderText, date, city, color,
             validForecasts[0].weather[0].main, validForecasts[0].weather[0].icon);
-
         }
 
       },
@@ -45,20 +42,17 @@ export class ReminderService {
 
       if (idOfReminderToEdit) {
         this.editExistingReminder(reminderText, date, city, idOfReminderToEdit, color);
-
       }
 
       else {
         this.addNewReminder(reminderText, date, city, color);
-
       }
-
     }
 
   }
 
   addNewReminder(reminderText: string, date: DateTime, city: string, color: string,
-    weatherText: string = '', weatherIcon: string = ''): void {
+                 weatherText: string = '', weatherIcon: string = ''): void {
 
     const rem: Reminder = {
       reminderText, date,
@@ -69,7 +63,7 @@ export class ReminderService {
   }
 
   editExistingReminder(reminderText: string, date: DateTime, city: string, id: number, color: string,
-    weatherText: string = '', weatherIcon: string = ''): void {
+                       weatherText: string = '', weatherIcon: string = ''): void {
 
     const rem: Reminder = {
       reminderText, date,
