@@ -19,19 +19,13 @@ export class ReminderService {
 
     if (Utils.isWeatherForecastAvailable(date)) {
       this.weatherService.retrieveForecastForFiveDays(city).subscribe(res => {
-        // res.list.forEach(weatherInfo => {
-        // console.log(weatherInfo.weather[0], +weatherInfo.dt * 1000, date);
-        // });
 
         validForecasts = res.list.filter(weatherInfo => {
-          // console.log(weatherInfo.dt * 1000, date);
           return Math.abs(+weatherInfo.dt * 1000 - date.toMillis()) > 0;
         });
 
-        // console.warn("valid forecast", validForecasts)
 
         if (idOfReminderToEdit) {
-          // debugger;
           this.editExistingReminder(reminderText, date, city, idOfReminderToEdit, color,
             validForecasts[0].weather[0].main, validForecasts[0].weather[0].icon);
 
@@ -50,7 +44,6 @@ export class ReminderService {
     else {
 
       if (idOfReminderToEdit) {
-        // debugger;
         this.editExistingReminder(reminderText, date, city, idOfReminderToEdit, color);
 
       }
@@ -65,27 +58,23 @@ export class ReminderService {
   }
 
   addNewReminder(reminderText: string, date: DateTime, city: string, color: string,
-                 weatherText: string = '', weatherIcon: string = ''): void {
+    weatherText: string = '', weatherIcon: string = ''): void {
 
     const rem: Reminder = {
       reminderText, date,
       city, id: Utils.generateUniqueIdForReminder(), weatherText, color, weatherIcon
     };
 
-    // debugger;
-
     this.store.dispatch(addReminder({ reminder: rem }));
   }
 
   editExistingReminder(reminderText: string, date: DateTime, city: string, id: number, color: string,
-                       weatherText: string = '', weatherIcon: string = ''): void {
+    weatherText: string = '', weatherIcon: string = ''): void {
 
     const rem: Reminder = {
       reminderText, date,
       city, id, weatherText, color, weatherIcon
     };
-
-    // debugger;
 
     this.store.dispatch(editReminder({ reminder: rem }));
   }

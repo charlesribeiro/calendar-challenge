@@ -1,10 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { ReminderDialogComponent } from './reminder-dialog.component';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { initialState } from 'src/app/state/reminder.reducer';
-import { Store } from '@ngrx/store';
 import { DateTime } from 'luxon';
 import { By } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';

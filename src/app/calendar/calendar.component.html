@@ -2,19 +2,7 @@
 <div style="display: flex;">
     <div class="customButtons" (click)="previous()">« previous month</div>
     <div class="customButtons" (click)="today()">current month</div>
-    <div class="customButtons" (click)="next()">next month»</div>
+    <div class="customButtons" (click)="next()">next month »</div>
 </div>
 
 <app-month-view [monthsAheadFromToday]="monthsAheadFromToday"></app-month-view>
-
-
-<!-- <button (click)="addReminder()">add</button> -->
-<!-- {{texto$ | async}} -->
-<!-- {{reminders$ | async}} -->
-<!-- 
-<div *ngFor="let rem of (reminders$ | async)">
-    {{rem.reminderText}}
-    {{rem.city}}
-    {{rem.date}}
-
-</div> -->

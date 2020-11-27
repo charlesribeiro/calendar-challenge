@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { DateTime } from 'luxon';
 import { Observable } from 'rxjs';
@@ -15,7 +15,7 @@ import { ReminderDialogComponent } from '../../reminder-dialog/reminder-dialog.c
   templateUrl: './day-view.component.html',
   styleUrls: ['./day-view.component.css']
 })
-export class DayViewComponent implements OnInit, OnChanges {
+export class DayViewComponent implements OnChanges {
 
   @Input() isWeekend: boolean;
   @Input() date: DateTime;
@@ -34,12 +34,6 @@ export class DayViewComponent implements OnInit, OnChanges {
 
   }
 
-  ngOnInit(): void {
-    this.isCurrentMonth = this.date.month === DateTime.local().month && this.date.year === DateTime.local().year;
-    this.remindersForThisDate$ = this.store.pipe(select(myActions.getRemindersOnDate, { date: this.date }));
-
-  }
-
   ngOnChanges(): void {
     this.isCurrentMonth = this.date.month === DateTime.local().month && this.date.year === DateTime.local().year;
     this.remindersForThisDate$ = this.store.pipe(select(myActions.getRemindersOnDate, { date: this.date }));
@@ -47,9 +41,8 @@ export class DayViewComponent implements OnInit, OnChanges {
   }
 
   newReminder(): void {
-    // console.log("new reminder", this.date);
 
-    const dialog = this.dialog.open(ReminderDialogComponent, {
+    this.dialog.open(ReminderDialogComponent, {
       data: {
 
         date: this.date,
@@ -58,9 +51,6 @@ export class DayViewComponent implements OnInit, OnChanges {
 
       },
       maxWidth: 800,
-    });
-
-    dialog.afterClosed().subscribe(result => {
     });
 
   }
@@ -99,12 +89,10 @@ export class DayViewComponent implements OnInit, OnChanges {
       this.store.dispatch(addReminder({ reminder: rem }));
       return 'not available';
     }
-
   }
 
   deleteAllRemindersFromDay(): void {
     this.store.dispatch(removeAllRemindersFromDay({ date: this.date }));
-
   }
 
 }

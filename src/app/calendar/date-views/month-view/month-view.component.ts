@@ -1,19 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-month-view',
   templateUrl: './month-view.component.html',
   styleUrls: ['./month-view.component.css']
 })
-export class MonthViewComponent implements OnInit {
+export class MonthViewComponent {
 
   @Input() monthsAheadFromToday: number;
 
   week = 0;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  weeksToShowByView = [0, 1, 2, 3, 4];
 
 }
