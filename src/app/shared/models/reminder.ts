@@ -10,8 +10,7 @@ export interface Reminder {
     weatherIcon?: string;
 }
 
-export interface State{
+export interface State {
     reminders: Reminder [];
     text: string;
-    // currentDate : DateTime;
 }
