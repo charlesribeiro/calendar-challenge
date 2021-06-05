@@ -35,7 +35,7 @@ export class DayViewComponent implements OnChanges {
   }
 
   ngOnChanges(): void {
-    this.isCurrentMonth = this.date.month === DateTime.local().month && this.date.year === DateTime.local().year;
+    this.isCurrentMonth = this.date?.month === DateTime.local().month && this.date?.year === DateTime.local().year;
     this.remindersForThisDate$ = this.store.pipe(select(myActions.getRemindersOnDate, { date: this.date }));
 
   }

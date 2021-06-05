@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppModule } from 'src/app/app.module';
 import { WeekViewComponent } from '../week-view/week-view.component';
 
 import { MonthViewComponent } from './month-view.component';
@@ -9,6 +10,7 @@ describe('MonthViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [AppModule],
       declarations: [ MonthViewComponent, WeekViewComponent ]
     })
     .compileComponents();
