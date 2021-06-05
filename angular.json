@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "calendar-challenge"
+  "defaultProject": "calendar-challenge",
+  "cli": {
+    "analytics": false
+  }
 }
