@@ -27,12 +27,12 @@ export class ReminderComponent implements OnInit {
   constructor(private store: Store<State>, public reminderService: ReminderService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.reminderText = this.reminder.reminderText;
-    this.cityText = this.reminder.city;
-    this.date = this.reminder.date;
-    this.weatherText = this.reminder.weatherText;
-    this.color = this.reminder.color;
-    this.weatherUrl = this.reminder.weatherIcon ? `http://openweathermap.org/img/wn/${this.reminder.weatherIcon}@2x.png ` : ``;
+    this.reminderText = this.reminder?.reminderText;
+    this.cityText = this.reminder?.city;
+    this.date = this.reminder?.date;
+    this.weatherText = this.reminder?.weatherText;
+    this.color = this.reminder?.color;
+    this.weatherUrl = this.reminder?.weatherIcon ? `http://openweathermap.org/img/wn/${this.reminder?.weatherIcon}@2x.png ` : ``;
   }
 
   reminderClick(): void{
