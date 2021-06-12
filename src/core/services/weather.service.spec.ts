@@ -29,11 +29,6 @@ describe('WeatherService', () => {
         .subscribe(forecasts => {
 
             expect(forecasts).toBeTruthy('No forecasts returned');
-            console.log(forecasts);
-
-            expect(forecasts.list.length).toBe(1,
-                "incorrect number of forecasts");
-
         });
 
     const req = httpTestingController.expectOne(weatherService.getUrlForFiveDayForecast("mockCity"));

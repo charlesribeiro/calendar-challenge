@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+
 import { Observable } from 'rxjs';
+
 import { reset } from '../state/reminder.actions';
 import { Reminder, State } from '../shared/models/reminder';
 import * as myActions from '../state/reminder.selector';

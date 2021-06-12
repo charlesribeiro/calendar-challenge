@@ -1,10 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
-import { ReminderDialogComponent } from './reminder-dialog.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { initialState } from 'src/app/state/reminder.reducer';
-import { DateTime } from 'luxon';
 import { By } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,10 +8,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
-import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { AppModule } from 'src/app/app.module';
+
+import { DateTime } from 'luxon';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+
+import { ReminderDialogComponent } from './reminder-dialog.component';
+import { initialState } from 'src/app/state/reminder.reducer';
 
 describe('ReminderDialogComponent', () => {
   let component: ReminderDialogComponent;

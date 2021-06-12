@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+
 import { Store } from '@ngrx/store';
 import { DateTime } from 'luxon';
+
 import { Reminder, State } from '../../../app/shared/models/reminder';
 import { removeReminder } from '../../../app/state/reminder.actions';
 import { ReminderService } from '../../../core/services/reminder.service';
