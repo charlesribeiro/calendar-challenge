@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
+
+import { Store } from '@ngrx/store';
 import { DateTime } from 'luxon';
+
 import { Reminder, State } from '../../app/shared/models/reminder';
 import { Utils } from '../../app/utils';
 import { WeatherService } from './weather.service';
-import { Store } from '@ngrx/store';
 import { addReminder, editReminder } from '../../app/state/reminder.actions';
 
 @Injectable({

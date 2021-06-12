@@ -1,14 +1,16 @@
 import { Component, Input, OnChanges } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+
 import { select, Store } from '@ngrx/store';
-import { DateTime } from 'luxon';
 import { Observable } from 'rxjs';
+import { DateTime } from 'luxon';
+
 import { addReminder, removeAllRemindersFromDay } from '../../../state/reminder.actions';
 import { Utils } from '../../../utils';
 import { WeatherService } from '../../../../core/services/weather.service';
 import { Reminder, State } from '../../../shared/models/reminder';
-import * as myActions from '../../../state/reminder.selector';
-import { MatDialog } from '@angular/material/dialog';
 import { ReminderDialogComponent } from '../../reminder-dialog/reminder-dialog.component';
+import * as myActions from '../../../state/reminder.selector';
 
 @Component({
   selector: 'app-day-view',
